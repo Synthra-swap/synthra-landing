@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* Base styles */
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Componenti esplicitati */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #6114f1, #ff45db);
+}
+
+.gradient-bg {
+  background-image: linear-gradient(to bottom right, #6114f1, #ff45db);
+}
+
+.btn-primary {
+  padding-left: 1.5rem;  /* px-6 */
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;  /* py-3 */
+  padding-bottom: 0.75rem;
+  border-radius: 9999px;  /* rounded-full */
+  background-image: linear-gradient(to bottom right, #6114f1, #ff45db);
+  font-weight: 600;  /* font-semibold */
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 10px 15px -3px rgba(97, 20, 241, 0.3), 0 4px 6px -4px rgba(97, 20, 241, 0.3);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(97, 20, 241, 0.3), 0 4px 6px -4px rgba(97, 20, 241, 0.3);
+}
+
+.btn-outline {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(97, 20, 241, 0.5);
+  color: #6114f1;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline:hover {
+  background-color: rgba(97, 20, 241, 0.1);
+  border-color: #6114f1;
+}
+
+.card {
+  padding: 1.5rem;  /* p-6 */
+  border-radius: 1rem;  /* rounded-2xl */
+  background-color: rgba(17, 24, 39, 0.6);  /* bg-gray-900/60 */
+  backdrop-filter: blur(16px);
+  border: 1px solid #1f2937;  /* border-gray-800 */
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  border-color: rgba(97, 20, 241, 0.3);
+}
