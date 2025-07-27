@@ -1,18 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Logo from './Logo';
 
-const HeroSection = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
+const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,42 +15,69 @@ const HeroSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <>
-      {/* Navbar */}
-      <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
-          scrolled ? 'bg-[#0a071a]/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
-        }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
+    <motion.nav
+      className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
+        scrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="max-w-6xl mx-auto flex justify-between items-center">
+        <Link to="/">
           <Logo />
-          <div className="hidden md:flex space-x-8">
-            {[
-              { name: 'Swap', url: 'https://app.synthra.org/#/swap' },
-              { name: 'Pool', url: 'https://app.synthra.org/#/pools' },
-              { name: 'Docs', url: 'https://docs.synthra.org' },
-              { name: 'Earn', url: 'https://app.synthra.org/#/earn' },
-              { name: 'Analytics', url: 'https://info.synthra.org' }
-            ].map((item, i) => (
-              <a key={i} href={item.url} className="text-white/60 hover:text-white transition-colors text-sm font-medium">
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <a
-            href="https://app.synthra.org"
-            className="bg-gradient-to-r from-[#6114f1] to-[#ff45db] px-6 py-2 rounded-full text-sm font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all"
+        </Link>
+        
+        <div className="hidden md:flex space-x-8">
+          {/* Internal navigation */}
+          <Link 
+            to="/" 
+            className={`transition-colors text-sm font-medium ${
+              isActive('/') ? 'text-white' : 'text-white/60 hover:text-white'
+            }`}
           >
-            Launch App
-          </a>
+            Home
+          </Link>
+          <Link 
+            to="/brand-assets" 
+            className={`transition-colors text-sm font-medium ${
+              isActive('/brand-assets') ? 'text-white' : 'text-white/60 hover:text-white'
+            }`}
+          >
+            Brand Assets
+          </Link>
+          
+          {/* External links */}
+          {[
+            { name: 'Docs', url: 'https://docs.synthra.org' },
+            { name: 'Analytics', url: 'https://info.synthra.org' }
+          ].map((item, i) => (
+            <a 
+              key={i} 
+              href={item.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-white transition-colors text-sm font-medium"
+            >
+              {item.name}
+            </a>
+          ))}
         </div>
-      </motion.nav>
-    </>
+        
+        <a
+          href="https://app.synthra.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-gradient-to-r from-[#6114f1] to-[#ff45db] px-6 py-2 rounded-full text-sm font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all"
+        >
+          Launch App
+        </a>
+      </div>
+    </motion.nav>
   );
 };
 
-export default HeroSection;
+export default Navbar;

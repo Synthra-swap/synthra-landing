@@ -5,10 +5,9 @@ import { useTopPools, formatLargeNumber } from '../hooks/useSubgraphData';
 const TopPools = () => {
   const { pools, loading, error } = useTopPools(6);
 
-  if (loading) {
-    return (
-      <div className="w-full bg-[#1b1433] rounded-xl p-6 border border-white/10">
-        <h3 className="text-xl font-semibold mb-4 text-white">Top Liquidity Pools</h3>
+  const renderContent = () => {
+    if (loading) {
+      return (
         <div className="space-y-4">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="flex justify-between items-center p-4 bg-white/5 rounded-lg animate-pulse">
@@ -20,41 +19,20 @@ const TopPools = () => {
             </div>
           ))}
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
-  if (error || !pools || pools.length === 0) {
+    if (error || !pools || pools.length === 0) {
+      return (
+        <div className="text-center py-8">
+          <p className="text-white/60">
+            {error ? 'Error loading pools' : 'No pools data available'}
+          </p>
+        </div>
+      );
+    }
+
     return (
-      <div className="w-full bg-[#1b1433] rounded-xl p-6 border border-white/10">
-        <h3 className="text-xl font-semibold mb-4 text-white">Top Liquidity Pools</h3>
-        <div className="text-yellow-400 text-sm">
-          Pool data unavailable - check connection to subgraph
-        </div>
-      </div>
-    );
-  }
-
-  const getFeeTierDisplay = (feeTier) => {
-    if (!feeTier) return '0.3%';
-    const feePercent = (parseInt(feeTier) / 10000).toFixed(2);
-    return `${feePercent}%`;
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="w-full bg-[#1b1433] rounded-xl p-6 border border-white/10"
-    >
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-xl font-semibold text-white">Top Liquidity Pools</h3>
-        <div className="text-xs text-white/60">
-          Sorted by TVL
-        </div>
-      </div>
-      
       <div className="space-y-4">
         {pools.map((pool, index) => (
           <motion.div
@@ -95,22 +73,50 @@ const TopPools = () => {
           </motion.div>
         ))}
       </div>
-      
-      <div className="mt-6 pt-4 border-t border-white/10">
-        <div className="flex justify-between text-sm">
-          <span className="text-white/60">Total Pools</span>
-          <span className="text-white">{pools.length}</span>
+    );
+  };
+
+  const getFeeTierDisplay = (feeTier) => {
+    if (!feeTier) return '0.3%';
+    const feePercent = (parseInt(feeTier) / 10000).toFixed(2);
+    return `${feePercent}%`;
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="w-full bg-gray-900/30 rounded-xl p-6 border border-white/10"
+    >
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-xl font-semibold text-white">Top Liquidity Pools</h3>
+        <div className="text-xs text-white/60">
+          Sorted by TVL
         </div>
       </div>
       
-      <div className="mt-4 text-center">
-        <a
-          href="https://info.synthra.org/pools"
-          className="text-purple-400 text-sm hover:text-purple-300 transition-colors"
-        >
-          View all pools →
-        </a>
-      </div>
+      {renderContent()}
+      
+      {!loading && !error && pools && pools.length > 0 && (
+        <>
+          <div className="mt-6 pt-4 border-t border-white/10">
+            <div className="flex justify-between text-sm">
+              <span className="text-white/60">Total Pools</span>
+              <span className="text-white">{pools.length}</span>
+            </div>
+          </div>
+          
+          <div className="mt-4 text-center">
+            <a
+              href="https://info.synthra.org/pools"
+              className="text-purple-400 text-sm hover:text-purple-300 transition-colors"
+            >
+              View all pools →
+            </a>
+          </div>
+        </>
+      )}
     </motion.div>
   );
 };

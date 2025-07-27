@@ -17,7 +17,7 @@ const VolumeChart = () => {
 
   if (loading) {
     return (
-      <div className="w-full bg-[#1b1433] rounded-xl p-6 border border-white/10">
+      <div className="w-full bg-gray-900/30 rounded-xl p-6 border border-white/10">
         <h3 className="text-xl font-semibold mb-4 text-white">Volume (7D)</h3>
         <div className="h-48 bg-white/5 rounded animate-pulse"></div>
       </div>
@@ -26,7 +26,7 @@ const VolumeChart = () => {
 
   if (error || !volumeData || volumeData.length === 0) {
     return (
-      <div className="w-full bg-[#1b1433] rounded-xl p-6 border border-white/10">
+      <div className="w-full bg-gray-900/30 rounded-xl p-6 border border-white/10">
         <h3 className="text-xl font-semibold mb-4 text-white">Volume (7D)</h3>
         <div className="text-yellow-400 text-sm">
           Chart data unavailable - using demo mode
@@ -43,7 +43,7 @@ const VolumeChart = () => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="w-full bg-[#1b1433] rounded-xl p-6 border border-white/10"
+      className="w-full bg-gray-900/30 rounded-xl p-6 border border-white/10"
     >
       <div className="flex justify-between items-start mb-4">
         <div>
@@ -83,7 +83,7 @@ const VolumeChart = () => {
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#1b1433',
+                backgroundColor: 'rgba(55, 65, 81, 0.3)',
                 border: '1px solid #ffffff20',
                 borderRadius: '8px',
                 color: '#ffffff'

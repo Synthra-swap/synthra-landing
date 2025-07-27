@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Goldman font class */
+.font-goldman {
+  font-family: 'Goldman', cursive;
+}
+
 /* Componenti esplicitati */
 .gradient-text {
   background-clip: text;

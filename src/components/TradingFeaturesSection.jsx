@@ -46,7 +46,7 @@ const AnimatedLabel = ({ x, y, label }) => (
       transform: 'translateX(-50%)',
     }}
   >
-    <div className="bg-[#1d1833] px-2 py-1 rounded-full border border-white/20">
+    <div className="bg-black px-2 py-1 rounded-full border border-white/20">
       <animated.span>{label}</animated.span>
     </div>
   </animated.div>
@@ -195,11 +195,11 @@ const TradingFeaturesSection = () => {
   const animatedPoint2 = getAnimatedPosition(indices.start2, indices.end2);
 
   return (
-    <div className="w-full bg-[#0a071a] text-white py-12">
+    <div className="w-full bg-black text-white py-12">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Swap column on the left spanning 2 rows */}
-          <div className="bg-[#1b1433] rounded-xl p-8 flex flex-col lg:row-span-2">
+          <div className="bg-purple-900/20 rounded-xl p-8 flex flex-col lg:row-span-2">
             <h2 className="text-4xl font-semibold mb-2">Swap</h2>
             <p className="text-sm text-white/60 mb-8 max-w-md">
               About $0.001 gas, 400ms TTF, no surge pricing, ~0 failure rates. One of the best swap UX across crypto
@@ -226,7 +226,7 @@ const TradingFeaturesSection = () => {
           </div>
 
           {/* Right side top row with the two existing components side by side */}
-          <div className="bg-[#1b1433] rounded-xl p-6 flex flex-col">
+          <div className="bg-purple-900/20 rounded-xl p-6 flex flex-col">
             <h2 className="text-xl font-semibold mb-1">Concentrated Liquidity Pools</h2>
             <p className="text-sm text-white/60 mb-3">
               Unlock greater capital efficiency by customising your LP position to the tick
@@ -277,7 +277,7 @@ const TradingFeaturesSection = () => {
             </div>
           </div>
 
-          <div className="bg-[#1b1433] rounded-xl p-6 flex flex-col">
+          <div className="bg-purple-900/20 rounded-xl p-6 flex flex-col">
             <h2 className="text-xl font-semibold mb-1">Superfast Routing, Limit Orders for Pros</h2>
             <p className="text-sm text-white/60 mb-3">
               Access liquidity from all pools on Synthra
@@ -285,7 +285,7 @@ const TradingFeaturesSection = () => {
             <div className="relative h-24 mt-auto flex items-center justify-center">
               <div className="w-full border-t border-dashed border-purple-400/40"></div>
               <div className="absolute right-[10%] top-[20%]">
-                <div className="bg-[#2a2154] text-white text-xs px-2 py-1 rounded-full border border-purple-500">
+                <div className="bg-gray-800 text-white text-xs px-2 py-1 rounded-full border border-purple-500">
                   Target Price
                 </div>
               </div>
@@ -296,7 +296,7 @@ const TradingFeaturesSection = () => {
           </div>
           
           {/* Right side bottom row with the ScrollingTokenPrices component */}
-          <div className="bg-[#1b1433] rounded-xl p-6 flex flex-col col-span-2">
+          <div className="bg-purple-900/20 rounded-xl p-6 flex flex-col col-span-2">
             <h2 className="text-xl font-semibold mb-1">Trading Pairs</h2>
             <p className="text-sm text-white/60 mb-3">
               Trading data across popular token pairs
