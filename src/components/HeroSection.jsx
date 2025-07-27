@@ -6,6 +6,16 @@ const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
   
+  // TUTTI gli hook devono essere chiamati sempre - PRIMA di qualsiasi logica condizionale
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  
   // Check if we're on mobile for certain effects
   useEffect(() => {
     const checkMobile = () => {
@@ -17,7 +27,7 @@ const HeroSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
   
-  // Mouse parallax effect
+  // Mouse parallax effect - SEMPRE attivo, ma con logica condizionale interna
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({
@@ -26,20 +36,12 @@ const HeroSection = () => {
       });
     };
     
+    // SEMPRE aggiungi l'event listener, indipendentemente da isMobile
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  }, []); // Rimuovi isMobile dalle dipendenze per evitare inconsistenze
   
-  // Grid for Apple-style effect
+  // Grid per Apple-style effect
   const gridSize = 15;
   const gridElements = Array.from({ length: gridSize * gridSize });
 
@@ -131,38 +133,34 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Floating elements */}
+      {/* Floating elements - SEMPRE renderizzati, ma con stili condizionali */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {!isMobile && (
-          <>
-            <motion.div
-              className="absolute w-16 h-16 rounded-lg backdrop-blur-lg bg-white/5 border border-white/10"
-              style={{ 
-                x: useTransform(() => 100 + mousePosition.x * -40),
-                y: useTransform(() => 100 + mousePosition.y * -40),
-                rotateZ: useTransform(() => mousePosition.x * 10),
-              }}
-            />
-            
-            <motion.div
-              className="absolute right-32 top-32 w-24 h-24 rounded-full backdrop-blur-lg bg-white/5 border border-white/10"
-              style={{ 
-                x: useTransform(() => mousePosition.x * 50),
-                y: useTransform(() => mousePosition.y * 50),
-                rotateZ: useTransform(() => mousePosition.y * -10),
-              }}
-            />
-            
-            <motion.div
-              className="absolute right-64 bottom-32 w-20 h-20 rounded-lg backdrop-blur-lg bg-white/5 border border-white/10"
-              style={{ 
-                x: useTransform(() => mousePosition.x * 30),
-                y: useTransform(() => mousePosition.y * 30),
-                rotateZ: useTransform(() => mousePosition.x * 20),
-              }}
-            />
-          </>
-        )}
+        <motion.div
+          className={`absolute w-16 h-16 rounded-lg backdrop-blur-lg bg-white/5 border border-white/10 ${isMobile ? 'opacity-0' : 'opacity-100'}`}
+          style={{ 
+            x: useTransform(() => 100 + mousePosition.x * -40),
+            y: useTransform(() => 100 + mousePosition.y * -40),
+            rotateZ: useTransform(() => mousePosition.x * 10),
+          }}
+        />
+        
+        <motion.div
+          className={`absolute right-32 top-32 w-24 h-24 rounded-full backdrop-blur-lg bg-white/5 border border-white/10 ${isMobile ? 'opacity-0' : 'opacity-100'}`}
+          style={{ 
+            x: useTransform(() => mousePosition.x * 50),
+            y: useTransform(() => mousePosition.y * 50),
+            rotateZ: useTransform(() => mousePosition.y * -10),
+          }}
+        />
+        
+        <motion.div
+          className={`absolute right-64 bottom-32 w-20 h-20 rounded-lg backdrop-blur-lg bg-white/5 border border-white/10 ${isMobile ? 'opacity-0' : 'opacity-100'}`}
+          style={{ 
+            x: useTransform(() => mousePosition.x * 30),
+            y: useTransform(() => mousePosition.y * 30),
+            rotateZ: useTransform(() => mousePosition.x * 20),
+          }}
+        />
       </div>
 
       <div className="container mx-auto px-6 z-10">
@@ -226,40 +224,38 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
         
-        {/* Token cards floating */}
-        {!isMobile && (
-          <motion.div 
-            className="absolute -bottom-32 left-1/2 transform -translate-x-1/2 w-full max-w-4xl flex justify-center opacity-60"
-            style={{ 
-              y: useTransform(scrollYProgress, [0, 1], [0, -100]),
-            }}
-          >
-            <TokenCard 
-              position={{ left: '0%', delay: 0.2 }} 
-              color="from-purple-500/20 to-purple-700/20"
-              mouseX={mousePosition.x}
-              mouseY={mousePosition.y}
-            />
-            <TokenCard 
-              position={{ left: '25%', delay: 0.3 }}
-              color="from-blue-500/20 to-blue-700/20"
-              mouseX={mousePosition.x}
-              mouseY={mousePosition.y}
-            />
-            <TokenCard 
-              position={{ left: '50%', delay: 0.4 }}
-              color="from-fuchsia-500/20 to-fuchsia-700/20"
-              mouseX={mousePosition.x}
-              mouseY={mousePosition.y}
-            />
-            <TokenCard 
-              position={{ left: '75%', delay: 0.5 }}
-              color="from-indigo-500/20 to-indigo-700/20"
-              mouseX={mousePosition.x}
-              mouseY={mousePosition.y}
-            />
-          </motion.div>
-        )}
+        {/* Token cards floating - SEMPRE renderizzati, ma con stili condizionali */}
+        <motion.div 
+          className={`absolute -bottom-32 left-1/2 transform -translate-x-1/2 w-full max-w-4xl flex justify-center ${isMobile ? 'opacity-0 pointer-events-none' : 'opacity-60'}`}
+          style={{ 
+            y: useTransform(scrollYProgress, [0, 1], [0, -100]),
+          }}
+        >
+          <TokenCard 
+            position={{ left: '0%', delay: 0.2 }} 
+            color="from-purple-500/20 to-purple-700/20"
+            mouseX={mousePosition.x}
+            mouseY={mousePosition.y}
+          />
+          <TokenCard 
+            position={{ left: '25%', delay: 0.3 }}
+            color="from-blue-500/20 to-blue-700/20"
+            mouseX={mousePosition.x}
+            mouseY={mousePosition.y}
+          />
+          <TokenCard 
+            position={{ left: '50%', delay: 0.4 }}
+            color="from-fuchsia-500/20 to-fuchsia-700/20"
+            mouseX={mousePosition.x}
+            mouseY={mousePosition.y}
+          />
+          <TokenCard 
+            position={{ left: '75%', delay: 0.5 }}
+            color="from-indigo-500/20 to-indigo-700/20"
+            mouseX={mousePosition.x}
+            mouseY={mousePosition.y}
+          />
+        </motion.div>
       </div>
 
       {/* Subtle animated particles */}
