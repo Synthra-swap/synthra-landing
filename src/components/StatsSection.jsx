@@ -37,10 +37,10 @@ const StatsSection = () => {
     },
   ] : defaultStats;
   return (
-    <section className="w-full bg-[#0a071a] text-white py-24">
+    <section className="w-full bg-black text-white py-24">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
-          className="relative bg-[#1b1433] border border-white/10 rounded-3xl overflow-hidden backdrop-blur"
+          className="relative bg-gray-900/30 border border-white/10 rounded-3xl overflow-hidden backdrop-blur"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}

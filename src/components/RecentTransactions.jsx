@@ -7,7 +7,7 @@ const RecentTransactions = () => {
 
   if (loading) {
     return (
-      <div className="w-full bg-[#1b1433] rounded-xl p-6 border border-white/10">
+      <div className="w-full bg-gray-900/30 rounded-xl p-6 border border-white/10">
         <h3 className="text-xl font-semibold mb-4 text-white">Recent Trades</h3>
         <div className="space-y-3">
           {[...Array(5)].map((_, i) => (
@@ -24,7 +24,7 @@ const RecentTransactions = () => {
 
   if (error) {
     return (
-      <div className="w-full bg-[#1b1433] rounded-xl p-6 border border-white/10">
+      <div className="w-full bg-gray-900/30 rounded-xl p-6 border border-white/10">
         <h3 className="text-xl font-semibold mb-4 text-white">Recent Trades</h3>
         <div className="text-yellow-400 text-sm">
           Live data unavailable - using demo mode
@@ -34,7 +34,7 @@ const RecentTransactions = () => {
   }
 
   return (
-    <div className="w-full bg-[#1b1433] rounded-xl p-6 border border-white/10">
+    <div className="w-full bg-gray-900/30 rounded-xl p-6 border border-white/10">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-semibold text-white">Recent Trades</h3>
         <div className="flex items-center gap-2">

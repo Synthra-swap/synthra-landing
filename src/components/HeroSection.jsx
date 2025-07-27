@@ -177,7 +177,7 @@ const HeroSection = () => {
             className="text-center mb-3"
           >
             <span className="px-4 py-1 rounded-full text-xs font-medium bg-white/10 backdrop-blur-md text-white/80">
-              Introducing Synthra DEX
+              Introducing Synthra
             </span>
           </motion.div>
           
@@ -266,6 +266,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <Particles />
       </div>
+      
+      {/* Gradient fade to black at bottom for continuity */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20" />
     </section>
   );
 };

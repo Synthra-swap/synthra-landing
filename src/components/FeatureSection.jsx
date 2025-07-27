@@ -33,7 +33,7 @@ const features = [
 
 const StatsSection = () => {
   return (
-    <section className="w-full bg-[#0a071a] text-white py-24">
+    <section className="w-full bg-black text-white py-24">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           className="mt-32 text-center mb-16"
@@ -57,7 +57,7 @@ const StatsSection = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="bg-[#1b1433] border border-white/10 backdrop-blur rounded-2xl p-6 hover:border-purple-500/30 transition-all hover:shadow-lg hover:shadow-purple-500/10"
+              className="bg-gray-900/30 border border-white/10 backdrop-blur rounded-2xl p-6 hover:border-purple-500/30 transition-all hover:shadow-lg hover:shadow-purple-500/10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}

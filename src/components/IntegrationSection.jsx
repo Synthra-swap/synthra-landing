@@ -12,7 +12,7 @@ const PartnerLogoScroll = () => {
   ];
 
   return (
-    <div className="w-full bg-[#0a071a] text-white">
+    <div className="w-full bg-black text-white pb-20">
       {/* Top section with Sui Grant - visible in the image but not the focus of request */}
       <div className="border-b border-white/10 py-8">
         <div className="max-w-6xl mx-auto px-4">
@@ -44,7 +44,7 @@ const PartnerLogoScroll = () => {
       </div>
 
       {/* Partner ticker section with scrolling logos */}
-      <div className="border-t border-white/10 bg-gradient-to-r from-[#1e133a]/20 via-[#2a1655]/10 to-[#1e133a]/20 py-8">
+      <div className="border-t border-white/10 bg-gray-900/20 py-8">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center text-white/80 text-lg mb-6">
             Fully integrated with{" "}
