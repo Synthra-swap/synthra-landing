@@ -1,31 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Import delle immagini
+import syntraLogo from '../assets/syntra-logo.png';
+import syntraLogoNoBg from '../assets/syntra-logo-no-bg.png';
+import syntraLogoBlack from '../assets/Synthra-logo-inteto-no-bg-black.png';
+import syntraLogoWhite from '../assets/Synthra-logo-inteto-no-bg-bianco.png';
+
 const BrandAssets = () => {
   const logoVariants = [
     {
       name: 'Primary Logo',
       description: 'Main logo with colored background',
-      preview: '/src/assets/syntra-logo.png',
-      file: '/src/assets/syntra-logo.png'
+      preview: syntraLogo,
+      file: syntraLogo
     },
     {
       name: 'Logo No Background',
       description: 'Transparent version for overlays',
-      preview: '/src/assets/syntra-logo-no-bg.png',
-      file: '/src/assets/syntra-logo-no-bg.png'
+      preview: syntraLogoNoBg,
+      file: syntraLogoNoBg
     },
     {
       name: 'Logo Black Version',
       description: 'Black variant for light backgrounds',
-      preview: '/src/assets/Synthra-logo-inteto-no-bg-black.png',
-      file: '/src/assets/Synthra-logo-inteto-no-bg-black.png'
+      preview: syntraLogoBlack,
+      file: syntraLogoBlack
     },
     {
       name: 'Logo White Version',
       description: 'White variant for dark backgrounds',
-      preview: '/src/assets/Synthra-logo-inteto-no-bg-bianco.png',
-      file: '/src/assets/Synthra-logo-inteto-no-bg-bianco.png'
+      preview: syntraLogoWhite,
+      file: syntraLogoWhite
     }
   ];
 
@@ -69,6 +75,15 @@ const BrandAssets = () => {
       description: 'Always keep the logo in its original orientation'
     }
   ];
+
+  const handleDownload = (logoFile, logoName) => {
+    const link = document.createElement('a');
+    link.href = logoFile;
+    link.download = `${logoName.toLowerCase().replace(/\s+/g, '-')}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="min-h-screen bg-black text-white pt-20">
@@ -121,12 +136,7 @@ const BrandAssets = () => {
                     <h3 className="text-xl font-medium mb-3">{logo.name}</h3>
                     <p className="text-white/50 mb-6">{logo.description}</p>
                     <button 
-                      onClick={() => {
-                        const link = document.createElement('a');
-                        link.href = logo.file;
-                        link.download = `${logo.name.toLowerCase().replace(/\s+/g, '-')}.png`;
-                        link.click();
-                      }}
+                      onClick={() => handleDownload(logo.file, logo.name)}
                       className="w-full bg-gradient-to-r from-[#6114f1] to-[#ff45db] py-3 px-6 rounded-2xl font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300"
                     >
                       Download PNG
@@ -273,7 +283,7 @@ const BrandAssets = () => {
               <div className="bg-green-500/10 border border-green-500/30 rounded-2xl p-8 mb-6">
                 <div className="bg-black rounded-xl p-8 mb-4 flex items-center justify-center min-h-[120px]">
                   <img 
-                    src="/src/assets/Synthra-logo-inteto-no-bg-bianco.png" 
+                    src={syntraLogoWhite} 
                     alt="Correct usage" 
                     className="h-22"
                   />
@@ -296,7 +306,7 @@ const BrandAssets = () => {
               <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-8 mb-6">
                 <div className="bg-black rounded-xl p-8 mb-4 flex items-center justify-center min-h-[120px]">
                   <img 
-                    src="/src/assets/Synthra-logo-inteto-no-bg-bianco.png" 
+                    src={syntraLogoWhite} 
                     alt="Incorrect usage" 
                     className="h-22"
                     style={{ 
@@ -319,26 +329,6 @@ const BrandAssets = () => {
             </div>
           </div>
         </motion.section>
-
-        {/* Download Section */}
-        {/* <motion.section
-          className="text-center"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-12">
-            <h2 className="text-3xl font-light mb-6">Complete Brand Kit</h2>
-            <p className="text-white/50 text-lg mb-8 max-w-2xl mx-auto">
-              Download the complete Synthra brand package including all logo variations, 
-              color specifications, and usage guidelines.
-            </p>
-            <button className="bg-gradient-to-r from-[#6114f1] to-[#ff45db] px-10 py-4 rounded-full text-lg font-medium hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105">
-              Download Brand Kit
-            </button>
-          </div>
-        </motion.section> */}
 
       </div>
     </div>
