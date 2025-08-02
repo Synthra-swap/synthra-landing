@@ -33,8 +33,6 @@ const Separator = ({
 
   const paths = direction === "left" ? leftPaths : rightPaths;
 
-
-
   const fillFade = (fill, delay = 1.6) => ({
     fill,
     stroke: "none",
@@ -84,36 +82,32 @@ const Separator = ({
   return (
     <div style={{ 
       margin: `${marginY} 0`,
-      position: 'relative'
+      position: 'relative',
+      width: '100%', // Assicura che il contenitore non superi la larghezza disponibile
+      minHeight: '110px' // Assicura spazio sufficiente per il bagliore
     }}>
-
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={isInView ? { 
-            opacity: [0, 0.5, 0.3], 
-            scaleX: [0, 1.2, 1]
-          } : { opacity: 0, scaleX: 0 }}
-          transition={{ 
-            opacity: { duration: 2, ease: "easeOut", delay: 1.8, times: [0, 0.6, 1] },
-            scaleX: { duration: 2.5, ease: "easeOut", delay: 1.6 }
-          }}
-          style={{
-            position: 'absolute',
-            top: '-100%',
-            left: direction === "left" ? '-30%' : '0%',
-            transform: 'translate(-50%, -50%)',
-            width: '120%',
-            height: glowSize,
-            background: `radial-gradient(ellipse 80% 50% at center, rgba(${r}, ${g}, ${b}, ${glowIntensity}) 0%, rgba(${r}, ${g}, ${b}, ${glowIntensity * 0.3}) 40%, transparent 70%)`,
-            filter: 'blur(20px)',
-            zIndex: 0,
-            pointerEvents: 'none',
-            overflow: 'hidden'
-          }}
-
-        />
-        
-     
+      <motion.div
+        initial={{ opacity: 0, scaleX: 0 }}
+        animate={isInView ? { 
+          opacity: [0, 0.5, 0.6], 
+          scaleX: [0, 1.2, 1]
+        } : { opacity: 0, scaleX: 0 }}
+        transition={{ 
+          opacity: { duration: 2, ease: "easeOut", delay: 1.8, times: [0, 0.6, 1] },
+          scaleX: { duration: 2.5, ease: "easeOut", delay: 1.6 }
+        }}
+        style={{
+          position: 'absolute',
+          top: '-60%',
+          transform: 'translate(-50%, -50%)',
+          width: '120%',
+          height: glowSize,
+          background: `radial-gradient(ellipse 80% 50% at center, rgba(${r}, ${g}, ${b}, ${glowIntensity}) 0%, rgba(${r}, ${g}, ${b}, ${glowIntensity * 0.3}) 40%, transparent 70%)`,
+          filter: 'blur(20px)',
+          zIndex: 0,
+          pointerEvents: 'none'
+        }}
+      />
 
       <svg
         ref={ref}
