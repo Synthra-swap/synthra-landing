@@ -11,6 +11,11 @@ body {
 .font-goldman {
   font-family: 'Goldman', cursive;
 }
+.font-playfair {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+}
 
 /* Componenti esplicitati */
 .gradient-text {

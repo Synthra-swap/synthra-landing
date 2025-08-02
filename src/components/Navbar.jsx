@@ -19,8 +19,8 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
-        scrolled ? 'bg-black/90 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
+      className={`fixed bg-black/60 backdrop-blur-md top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
+        scrolled ? 'bg-black/60 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -71,7 +71,7 @@ const Navbar = () => {
           href="https://app.synthra.org"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-gradient-to-r from-[#6114f1] to-[#ff45db] px-6 py-2 rounded-full text-sm font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all"
+          className=" bg-white text-black  px-6 py-2 rounded-full text-sm font-medium hover:shadow-lg hover:shadow-purple-500/20 transition-all"
         >
           Launch App
         </a>
