@@ -50,7 +50,7 @@ const TradingFeaturesSection = () => {
 
           {/* Liquidity */}
           <motion.div 
-            className="lg:col-span-1 bg-gray-900/80 border border-gray-700/50 rounded-lg p-8 flex flex-col relative"
+            className="lg:col-span-1 bg-black border border-gray-700/50 rounded-lg p-8 flex flex-col relative"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
