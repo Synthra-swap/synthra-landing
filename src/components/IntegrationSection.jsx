@@ -1,5 +1,7 @@
 import React from "react";
 import uomiLogo from "../assets/UOMI_white.png";
+import coinGecko from "../assets/CG-Wordmark@2x-2.png";
+
 
 const PartnerLogoScroll = () => {
   const partners = [
@@ -8,6 +10,8 @@ const PartnerLogoScroll = () => {
       name: "TradingView",
       logo: "https://framerusercontent.com/images/s68ogdaNaA5tBCptnCUV4oZJlSg.png?scale-down-to=512",
     },
+    { name: "CoinGecko", logo: coinGecko },
+    { name: "The Graph", logo: "https://thegraph.com/images/branding/logo-light.svg" },
     // Aggiungi altri partner se servono
   ];
 
