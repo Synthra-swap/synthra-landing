@@ -1,7 +1,7 @@
 import React from "react";
 import uomiLogo from "../assets/UOMI_white.png";
 import coinGecko from "../assets/CG-Wordmark@2x-2.png";
-
+import theGraph from "../assets/theGraph.png";
 
 const PartnerLogoScroll = () => {
   const partners = [
@@ -11,12 +11,12 @@ const PartnerLogoScroll = () => {
       logo: "https://framerusercontent.com/images/s68ogdaNaA5tBCptnCUV4oZJlSg.png?scale-down-to=512",
     },
     { name: "CoinGecko", logo: coinGecko },
-    { name: "The Graph", logo: "https://thegraph.com/images/branding/logo-light.svg" },
+    { name: "The Graph", logo: theGraph },
     // Aggiungi altri partner se servono
   ];
 
   // Crea multiple copie per un loop fluido
-  const repeatedPartners = Array(6).fill(partners).flat();
+  const duplicatedPartners = [...partners, ...partners];
 
   return (
     <section className="relative w-full bg-black text-white py-32 overflow-hidden">
@@ -62,10 +62,10 @@ const PartnerLogoScroll = () => {
         </div>
 
         {/* Partner Logos Scroll */}
-        <div className="relative w-full overflow-hidden h-16">
-          <div className="flex space-x-24 animate-scroll whitespace-nowrap">
-            {repeatedPartners.map((partner, idx) => (
-              <div key={idx} className="flex-shrink-0">
+        <div className="relative w-full overflow-hidden">
+          <div className="flex items-center gap-24 animate-scroll">
+            {duplicatedPartners.map((partner, idx) => (
+              <div key={`${partner.name}-${idx}`} className="flex-shrink-0">
                 <img
                   src={partner.logo}
                   alt={partner.name}
@@ -77,19 +77,22 @@ const PartnerLogoScroll = () => {
         </div>
       </div>
 
-      {/* CSS for animation and grid */}
+      {/* CSS per animazione fluida e grid */}
       <style jsx>{`
         @keyframes scroll {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-100% / 6));
+            transform: translateX(-50%);
           }
         }
+        
         .animate-scroll {
-          animation: scroll 5s linear infinite;
+          animation: scroll 20s linear infinite;
+          width: fit-content;
         }
+        
         .bg-grid-pattern {
           background-image: radial-gradient(
             rgba(255, 255, 255, 0.1) 1px,
