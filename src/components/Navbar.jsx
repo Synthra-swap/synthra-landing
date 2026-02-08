@@ -41,8 +41,16 @@ const Navbar = () => {
           >
             Home
           </Link>
-          <Link 
-            to="/brand-assets" 
+          <Link
+            to="/research"
+            className={`transition-colors text-sm font-medium ${
+              location.pathname.startsWith('/research') ? 'text-white' : 'text-white/60 hover:text-white'
+            }`}
+          >
+            Research
+          </Link>
+          <Link
+            to="/brand-assets"
             className={`transition-colors text-sm font-medium ${
               isActive('/brand-assets') ? 'text-white' : 'text-white/60 hover:text-white'
             }`}

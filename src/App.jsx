@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 import SubgraphStatus from './components/SubgraphStatus';
 import Home from './pages/Home';
 import BrandAssets from './pages/BrandAssets';
+import Research from './pages/Research';
+import ArcTestnetReport from './pages/ArcTestnetReport';
 import { useProtocolStats } from './hooks/useSubgraphData';
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/brand-assets" element={<BrandAssets />} />
+            <Route path="/research" element={<Research />} />
+            <Route path="/research/arc-testnet-100-days" element={<ArcTestnetReport />} />
           </Routes>
           <Footer />
         </motion.div>

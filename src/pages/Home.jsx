@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection';
 import FeatureSection from '../components/FeatureSection';
 import TradingFeaturesSection from '../components/TradingFeaturesSection';
 import StatsSection from '../components/StatsSection';
+import PerpsSection from '../components/PerpsSection';
 import IntegrationSection from '../components/IntegrationSection';
 import RecentTransactions from '../components/RecentTransactions';
 import VolumeChart from '../components/VolumeChart';
@@ -27,6 +28,10 @@ const Home = () => {
       <StatsSection />
 
         <Separator direction="right" color='rgb(201, 53, 235)' marginY="8rem" />
+      
+      <PerpsSection />
+
+        <Separator direction="left" color='rgb(201, 53, 235)' marginY="8rem" />
       
       {/* Networks Section */}
      <section className="w-full bg-black text-white py-12 lg:py-24 relative overflow-hidden">
