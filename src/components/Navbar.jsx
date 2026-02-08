@@ -53,7 +53,6 @@ const Navbar = () => {
           {/* External links */}
           {[
             { name: 'Docs', url: 'https://docs.synthra.org' },
-            { name: 'Analytics', url: 'https://info.synthra.org' }
           ].map((item, i) => (
             <a 
               key={i} 

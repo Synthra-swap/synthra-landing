@@ -29,13 +29,7 @@ function App() {
           <Footer />
         </motion.div>
       </AnimatePresence>
-      
-      {/* Status del subgraph */}
-      <SubgraphStatus 
-        isConnected={stats && !subgraphError}
-        error={subgraphError}
-        onRetry={refetch}
-      />
+
     </div>
   );
 }
