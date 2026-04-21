@@ -1,290 +1,214 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import HeroSection from '../components/HeroSection';
-import FeatureSection from '../components/FeatureSection';
+
 import TradingFeaturesSection from '../components/TradingFeaturesSection';
-import StatsSection from '../components/StatsSection';
+
 import PerpsSection from '../components/PerpsSection';
-import IntegrationSection from '../components/IntegrationSection';
-import RecentTransactions from '../components/RecentTransactions';
-import VolumeChart from '../components/VolumeChart';
-import TopPools from '../components/TopPools';
-import TopTokens from '../components/TopTokens';
-import Separator from '../components/Separetor';
+
+import ScrollShowcase from '../components/ScrollShowcase';
+
+import Puprle from '../components/purpleSection';
+import WhySynthraSection from '../components/WhySynthraSection';
+import React, { useState, useEffect, useRef } from 'react';
+
+
+const FadeIn = ({ children, delay = 0, className = '' }) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.15 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(32px)',
+        transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}s, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+const cardClass = "rounded-2xl border border-white/[0.06] bg-white/[0.02]";
+
+
+  const pillars = [
+    {
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-purple-400">
+          <path d="M3 3v18h18" /><path d="M7 16l4-8 4 4 6-6" />
+        </svg>
+      ),
+      label: 'Concentrated Liquidity',
+    },
+    {
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-purple-400">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" />
+        </svg>
+      ),
+      label: 'Dynamic Pricing',
+    },
+    {
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-purple-400">
+          <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+      ),
+      label: 'Modular Design',
+    },
+  ];
+
+  const features = [
+    {
+      title: 'Multi-token Support',
+      desc: 'Stablecoins, volatile tokens, and custom assets within any pool.',
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-pink-400">
+          <circle cx="8" cy="8" r="6" /><circle cx="16" cy="16" r="6" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Fee Tier Customization',
+      desc: 'Adapt fee models to match volatility, token type, and behavior.',
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-pink-400">
+          <path d="M12 2v20M2 12h20" /><path d="M17 7l-5 5-5-5" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Liquidity Layer Modularity',
+      desc: 'Use pools as building blocks for vaults, extensions, or structured products.',
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-pink-400">
+          <rect x="2" y="6" width="20" height="12" rx="2" /><path d="M6 6V4a2 2 0 012-2h8a2 2 0 012 2v2" />
+        </svg>
+      ),
+    },
+  ];
+
 
 const Home = () => {
   return (
-    <div style={{overflowX: 'hidden'}} >
+    <div style={{overflowX: 'clip'}} >
       <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&display=swap');
         .bg-gradient-to-br { background: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
         .bg-gradient-to-t { background: linear-gradient(to top, var(--tw-gradient-stops)); }
         .bg-gradient-to-l { background: linear-gradient(to left, var(--tw-gradient-stops)); }
         .bg-gradient-to-tl { background: linear-gradient(to top left, var(--tw-gradient-stops)); }
       `}</style>
+      <SEO
+        title="Synthra — All-in-One DEX on Arc, Robinhood & Emerging EVM Chains"
+        description="Synthra is the all-in-one decentralized exchange for Arc, Robinhood and emerging EVM chains. Swap, perpetuals up to 100x leverage, cross-chain bridge, token launchpad & developer API — low fees, deep liquidity, one protocol."
+        path="/"
+        faq={[
+          {
+            question: 'What is Synthra?',
+            answer: 'Synthra is an all-in-one decentralized exchange (DEX) built for emerging EVM chains like Arc and Robinhood. It combines spot trading with concentrated liquidity, perpetual futures with up to 100x leverage, a cross-chain bridge, token launchpad, and developer API into a single protocol.',
+          },
+          {
+            question: 'Which blockchains does Synthra support?',
+            answer: 'Synthra is live on Arc (by Circle) and Robinhood chain, with plans to expand to additional emerging EVM-compatible networks. The protocol is designed specifically for new and underserved chains where deep liquidity is needed most.',
+          },
+          {
+            question: 'What can I do on Synthra?',
+            answer: 'You can swap tokens with concentrated liquidity pools, trade perpetual futures with up to 100x leverage, bridge assets across chains, launch tokens via the launchpad, and build on top of Synthra using its API. All with low gas fees (~$0.001) and fast execution (~400ms).',
+          },
+          {
+            question: 'Is Synthra the best DEX on Arc?',
+            answer: 'Synthra is the leading decentralized exchange on Arc blockchain, offering the deepest liquidity, lowest fees, and the most complete feature set including spot, perps, bridge, and launchpad — all in one protocol.',
+          },
+          {
+            question: 'Does Synthra have a token?',
+            answer: 'Synthra currently does not have a native token. The protocol focuses on building the best trading infrastructure first. Follow @Synthra_swap on Twitter for updates.',
+          },
+        ]}
+      />
       <HeroSection />
-      <Separator direction="right" color='rgb(201, 53, 235)' marginY="8rem" />
-      <TradingFeaturesSection />
-        <Separator direction="left" color='rgb(201, 53, 235)' marginY="8rem" />
-      <StatsSection />
 
-        <Separator direction="right" color='rgb(201, 53, 235)' marginY="8rem" />
+            <ScrollShowcase />
+      {/* <Separator direction="right" color='rgb(201, 53, 235)' marginY="8rem" /> */}
+
+      
+      <div style={{ position: 'relative', zIndex: 10, marginTop: '-60px' }}>
+      <TradingFeaturesSection />
+
+          <Puprle />
       
       <PerpsSection />
 
-        <Separator direction="left" color='rgb(201, 53, 235)' marginY="8rem" />
-      
-      {/* Networks Section */}
-     <section className="w-full bg-black text-white py-12 lg:py-24 relative overflow-hidden">
-        {/* Background gradient light */}
-        <div className="absolute bottom-0 left-0 w-full h-2/3" style={{background: 'linear-gradient(to top, rgba(255, 69, 219, 0.25), rgba(255, 69, 219, 0.1), transparent)'}}></div>
-        <div className="absolute bottom-0 right-0 w-2/3 h-full" style={{background: 'linear-gradient(to left, rgba(255, 69, 219, 0.2), rgba(255, 69, 219, 0.05), transparent)'}}></div>
+  
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-          <motion.div
-            className="text-center mb-8 lg:mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* Icons - Stack vertically on mobile, horizontal on desktop */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-8 lg:gap-16 mb-8 lg:mb-12">
-              <motion.div 
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
-                <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4 lg:mb-6 flex items-center justify-center">
-                  <div className="w-12 h-12 lg:w-16 lg:h-16 relative">
-                    {/* Pink striped icon */}
-                    <div className="absolute inset-0 flex flex-col justify-center gap-1">
-                      <div className="h-1 bg-[#ff45db] rounded"></div>
-                      <div className="h-1 bg-[#ff45db]/70 rounded"></div>
-                      <div className="h-1 bg-[#ff45db] rounded"></div>
-                      <div className="h-1 bg-[#ff45db]/50 rounded"></div>
-                      <div className="h-1 bg-[#ff45db] rounded"></div>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-xs lg:text-sm font-medium text-white/70">Concentrated Liquidity</h3>
-              </motion.div>
+      </div>{/* close position:relative div */}
 
-              <motion.div 
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4 lg:mb-6 flex items-center justify-center">
-                  <div className="w-12 h-12 lg:w-16 lg:h-16 relative">
-                    {/* Pink triangle/pyramid icon */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative">
-                        <div className="w-0 h-0 border-l-6 border-r-6 border-b-8 border-l-transparent border-r-transparent border-b-[#ff45db]"></div>
-                        <div className="w-0 h-0 border-l-4 border-r-4 border-b-6 border-l-transparent border-r-transparent border-b-[#ff45db]/70 absolute top-2 left-1/2 transform -translate-x-1/2"></div>
-                        <div className="w-0 h-0 border-l-2 border-r-2 border-b-4 border-l-transparent border-r-transparent border-b-[#ff45db]/50 absolute top-4 left-1/2 transform -translate-x-1/2"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-xs lg:text-sm font-medium text-white/70">Dynamic Pricing</h3>
-              </motion.div>
+      {/* ═══════════════════════════════════════════
+          WHY SYNTHRA — scroll-activated 2-column
+          (must be outside overflow/position containers for sticky to work)
+          ═══════════════════════════════════════════ */}
+      <WhySynthraSection />
 
-              <motion.div 
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4 lg:mb-6 flex items-center justify-center">
-                  <div className="w-12 h-12 lg:w-16 lg:h-16 relative">
-                    {/* Pink grid/modular icon */}
-                    <div className="absolute inset-0 grid grid-cols-4 gap-1 p-2">
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db]/70 rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db]/70 rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                    </div>
-                  </div>
-                </div>
-                <h3 className="text-xs lg:text-sm font-medium text-white/70">Modular Design</h3>
-              </motion.div>
-            </div>
+      {/* ═══════════════════════════════════════════
+          CLOSING SECTION — Ecosystem + Final CTA
+          ═══════════════════════════════════════════ */}
 
-            <motion.h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-playfair font-light mb-6 lg:mb-8 tracking-wide">
-              Ecosystem Integrations
-            </motion.h2>
+   <div className="w-full bg-black text-white relative overflow-hidden">
 
-            <motion.p className="text-white/50 max-w-lg mx-auto mb-8 lg:mb-16 text-base lg:text-lg px-4">
-              Designed to connect with a wide range of protocols, apps,<br className="hidden sm:block" />
-              and financial layers across multiple chains.
-            </motion.p>
+      {/* Background glows */}
+      <div
+        className="absolute bottom-0 left-0 w-full h-2/3 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to top, rgba(232,121,168,0.18), rgba(168,85,247,0.08), transparent)',
+        }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-2/3 h-full pointer-events-none"
+        style={{
+          background: 'linear-gradient(to left, rgba(232,121,168,0.14), rgba(168,85,247,0.05), transparent)',
+        }}
+      />
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.1) 0%, transparent 60%)',
+        }}
+      />
+      <div
+        className="absolute top-0 left-0 right-0 h-64 pointer-events-none z-30"
+        style={{
+          background: 'linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.3) 30%, transparent 100%)',
+        }}
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none z-30"
+        style={{
+          background: 'linear-gradient(to top, #000 0%, rgba(0,0,0,0.3) 40%, transparent 100%)',
+        }}
+      />
 
-            <motion.div 
-              className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 lg:p-8 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-0">
-                <div className="text-center lg:text-left">
-                  <h3 className="text-lg lg:text-xl font-medium text-white mb-2">
-                    Want to launch incentives, test new mechanics,
-                  </h3>
-                  <p className="text-lg lg:text-xl font-medium text-white/80">
-                    or connect with active liquidity providers?
-                  </p>
-                </div>
-                <button className="bg-white/15 hover:bg-white/25 border border-white/30 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-2xl font-medium transition-all duration-300 whitespace-nowrap backdrop-blur-sm w-full sm:w-auto"
-                onClick={() => window.open('https://discord.gg/eesEKPRDtd', '_blank')}>
-                  Join the Ecosystem
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
+      <section className="max-w-6xl mx-auto px-4 py-24 relative z-10">
+        {/* Heading */}
+       
       </section>
-      
-      {/* Features Section */}
-      <section className="w-full bg-black text-white py-24 lg:py-48 relative overflow-hidden">
-        <div className="absolute top-0 w-full h-1/2" style={{background: 'linear-gradient(to bottom, rgba(255, 69, 219, 0.1), rgba(255, 69, 219, 0.05), transparent)'}}></div>
-        
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-          <motion.div
-            className="text-center mb-12 lg:mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light font-playfair mb-8 lg:mb-16 tracking-wide">
-              Features
-            </h2>
-          </motion.div>
 
-          <div className="space-y-4 lg:space-y-6">
-            <motion.div 
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-md border border-white/20"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex-shrink-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 relative">
-                    {/* Pink multiasset icon */}
-                    <div className="absolute inset-0 grid grid-cols-2 gap-1">
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db]/70 rounded-sm"></div>
-                      <div className="bg-[#ff45db]/50 rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-medium text-white mb-2">Multi-token Support</h3>
-                <p className="text-white/60 text-sm sm:text-lg">
-                  Seamlessly integrate stablecoins, volatile tokens,<br className="hidden sm:block" />
-                  and custom assets within any pool.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-md border border-white/20 lg:ml-16"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <div className="flex-shrink-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 relative">
-                    {/* Pink logic icon */}
-                    <div className="absolute inset-0 grid grid-cols-3 gap-0.5">
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db]/60 rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db]/60 rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                      <div className="bg-[#ff45db] rounded-sm"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-medium text-white mb-2">Fee Tier Customization</h3>
-                <p className="text-white/60 text-sm sm:text-lg">
-                  Adapt fee models to match volatility, token type,<br className="hidden sm:block" />
-                  and trading behavior.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-md border border-white/20 lg:ml-32"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="flex-shrink-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 relative">
-                    {/* Pink modularity icon */}
-                    <div className="absolute inset-0 flex flex-col gap-0.5">
-                      <div className="flex gap-0.5">
-                        <div className="w-2 h-2 bg-[#ff45db] rounded-sm"></div>
-                        <div className="w-2 h-2 bg-[#ff45db] rounded-sm"></div>
-                        <div className="w-2 h-2 bg-[#ff45db] rounded-sm"></div>
-                      </div>
-                      <div className="flex gap-0.5">
-                        <div className="w-2 h-2 bg-[#ff45db] rounded-sm"></div>
-                        <div className="w-2 h-2 bg-[#ff45db] rounded-sm"></div>
-                        <div className="w-2 h-2 bg-[#ff45db] rounded-sm"></div>
-                      </div>
-                      <div className="flex gap-0.5">
-                        <div className="w-2 h-2 bg-[#ff45db] rounded-sm"></div>
-                        <div className="w-2 h-2 bg-[#ff45db] rounded-sm"></div>
-                        <div className="w-2 h-2 bg-[#ff45db] rounded-sm"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-medium text-white mb-2">Liquidity Layer Modularity</h3>
-                <p className="text-white/60 text-sm sm:text-lg">
-                  Use pools as building blocks to create<br className="hidden sm:block" />
-                  AMM extensions, vaults or structured products.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      
-     <Separator direction="left" color='rgb(151, 53, 235)' marginY="8rem" />
-      
-      <IntegrationSection />
+    </div>
+  
+  
     </div>
   );
 };

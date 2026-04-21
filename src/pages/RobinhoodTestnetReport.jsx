@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 /* ── helper components ──────────────────────────────────── */
 
 const IMG = '/research/robinhood-testnet';
-const COVER = '/research/arc-testnet/cover.png';
+const COVER = '/research/robinhood-testnet/cover.webp';
 
 const ChartImg = ({ src, alt, caption }) => (
   <figure className="my-12">

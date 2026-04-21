@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Download, Copy, Check, Eye, Palette, Type, Image, Grid, FileText } from 'lucide-react';
+import SEO from '../components/SEO';
 
 // Import delle immagini (sostituisci con i path corretti nel tuo progetto)
 import syntraLogo from '../assets/syntra-logo.png';
@@ -94,6 +95,12 @@ const BrandAssets = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <SEO
+        title="Brand Assets"
+        description="Official Synthra brand assets, logos, colors, and typography guidelines. Download Synthra logos and brand kit."
+        path="/brand-assets"
+        keywords="Synthra brand, Synthra logo, Synthra brand assets, Synthra brand kit, DEX branding"
+      />
       
       {/* Hero Section */}
       <div className="relative pt-40 pb-32 px-6 lg:px-8">
