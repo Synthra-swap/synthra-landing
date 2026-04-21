@@ -77,7 +77,7 @@ const tocItems = [
   { id: 'developer-activity', label: '3 · Developer Activity' },
   { id: 'network-performance', label: '4 · Network Performance' },
   { id: 'activity-distribution', label: '5 · Activity Distribution' },
-  { id: 'marketing-silence', label: '6 · Marketing Silence' },
+  { id: 'marketing-silence', label: '6 · Communications Cadence' },
   { id: 'thesis', label: '7 · Thesis' },
   { id: 'key-metrics', label: '8 · Key Metrics' },
   { id: 'what-to-watch', label: '9 · What to Watch' },
@@ -108,8 +108,8 @@ const RobinhoodTestnetReport = () => {
   return (
     <>
       <SEO
-        title="Robinhood Chain Testnet: The Rocket That Ran Out of Fuel"
-        description="An independent analysis of Robinhood Chain's first ~70 days: 90.6M transactions, 530K addresses, 9.48M contracts deployed, a 0.15% verification rate, and an accelerating decline Robinhood isn't discussing. By Synthra Research."
+        title="Robinhood Chain Testnet: The First 70 Days"
+        description="An independent on-chain analysis of Robinhood Chain's first ~70 days: 90.6M transactions, 530K addresses, 9.48M contracts deployed, a 0.15% verification rate, and a clear post-peak decline in transactions, DAA, and new accounts. By Synthra Research."
         path="/research/robinhood-chain-70-days"
         image="https://synthra.org/research/robinhood-testnet/cover.webp"
         keywords="Robinhood Chain, Robinhood testnet, Robinhood L2, Robinhood on-chain analysis, Robinhood blockchain, Arbitrum Orbit, tokenized RWA, dex on robinhood, Synthra Research, emerging EVM chains"
@@ -130,7 +130,7 @@ const RobinhoodTestnetReport = () => {
           },
           {
             question: 'Why is Robinhood Chain activity declining?',
-            answer: 'After peaking in late March 2026 at ~2.4M daily transactions and ~120K daily active addresses, Robinhood Chain has entered a post-hype decline: ~40% drop in transactions and ~30% drop in DAA over three weeks. An extraordinarily low 0.15% contract verification rate and 17.90 tx/active-address/day ratio suggest most activity is automated bot/script usage rather than organic developer engagement. Robinhood has also gone publicly silent about the chain since February 19, 2026.',
+            answer: 'After peaking in late March 2026 at ~2.4M daily transactions and ~120K daily active addresses, Robinhood Chain has entered a clear post-peak decline: ~40% drop in transactions and ~30% drop in DAA over three weeks, with growth still negative. A 0.15% contract verification rate and 17.90 tx/active-address/day ratio suggest most activity comes from automated scripts rather than application developers. Public communications from the Robinhood team have also been limited since February 19, 2026.',
           },
           {
             question: 'Is there a DEX on Robinhood Chain?',
@@ -173,7 +173,7 @@ const RobinhoodTestnetReport = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Robinhood Chain Testnet: The Rocket That Ran Out of Fuel
+              Robinhood Chain Testnet: The First 70 Days
             </motion.h1>
 
             <motion.p
@@ -182,7 +182,7 @@ const RobinhoodTestnetReport = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              When Robinhood launched its public testnet on February 10, 2026 at Consensus Hong Kong, the narrative was about as good as it gets. A NASDAQ-listed fintech giant with 27 million funded customers, announcing an Arbitrum-based L2 purpose-built for tokenized real-world assets. Nine days later, Vlad Tenev tweeted 4 million transactions in the first week. Then the official messaging went almost completely silent.
+              When Robinhood launched its public testnet on February 10, 2026 at Consensus Hong Kong, the narrative was about as good as it gets. A NASDAQ-listed fintech giant with 27 million funded customers, announcing an Arbitrum-based L2 purpose-built for tokenized real-world assets. Nine days later, Vlad Tenev tweeted 4 million transactions in the first week. Since then, official messaging about the chain has been notably sparse.
             </motion.p>
 
             <motion.p
@@ -191,7 +191,7 @@ const RobinhoodTestnetReport = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              An independent analysis of Robinhood Chain's first ~70 days of public testnet activity, from February 10 through mid-April 2026, drawn entirely from on-chain data. The data tells a story that Robinhood's press releases do not: an explosive launch, sustained growth through March, and then, starting in early April, an unmistakable, accelerating decline.
+              An independent analysis of Robinhood Chain's first ~70 days of public testnet activity, from February 10 through mid-April 2026, drawn entirely from on-chain data. The data shows a strong launch, sustained growth through March, and, starting in early April, a clear and accelerating decline in transactions, daily active addresses, and new account creation.
             </motion.p>
 
             <motion.div
@@ -229,19 +229,19 @@ const RobinhoodTestnetReport = () => {
           </P>
 
           <P>
-            But the headline number we want to flag first is the one from the dashboard: <Strong>-13.8% seven-day transaction growth</Strong>. After peaking in late March at ~2.4M daily transactions, volume has contracted toward ~1.2 to 1.3M by mid-April. Daily active addresses, which peaked above 120K in the third week of March, have now fallen to ~65 to 80K. Account creation has essentially stopped: the most recent bars on the new-accounts chart are barely visible.
+            The headline number worth flagging first is the one from the dashboard: <Strong>-13.8% seven-day transaction growth</Strong>. After peaking in late March at ~2.4M daily transactions, volume has contracted to ~1.2 to 1.3M by mid-April. Daily active addresses, which peaked above 120K in the third week of March, have fallen to a ~65 to 80K range. New account creation has effectively collapsed: the most recent bars on the new-accounts chart are barely visible next to the February launch spike.
           </P>
 
           <P>
-            A second concern sits beneath the headline decline. Robinhood Chain shows <Strong>17.90 transactions per active address per day</Strong>, more than 3x the ratio we observed on Circle's Arc testnet (5.86) and well above what organic human usage typically produces. Combined with an extraordinarily low <Strong>contract verification rate of 0.15%</Strong> (14,489 verified out of 9.48M deployed, versus ~8.9% on Arc), the pattern suggests a testnet where a large share of activity comes from automated scripts, airdrop farmers, and bot operators rather than application developers iterating on real products.
+            A second observation sits beneath the headline decline. Robinhood Chain shows <Strong>17.90 transactions per active address per day</Strong>, more than 3x the ratio we observed on Circle's Arc testnet (5.86) and well above what organic human usage typically produces. Combined with a <Strong>contract verification rate of 0.15%</Strong> (14,489 verified out of 9.48M deployed, versus ~8.9% on Arc), the pattern points to a testnet where a large share of the workload is driven by automated scripts and stress-test deployers rather than application developers iterating on production code.
           </P>
 
           <P>
-            A third concern, and perhaps the most important one for anyone reading this as a signal about Robinhood's strategic commitment: <Strong>the marketing has gone quiet</Strong>. After the Tenev tweet on February 19 celebrating 4 million transactions, there has been no significant public communication from Robinhood or its executives about Robinhood Chain. The company's press releases in March and April have focused on monthly operating data, prediction markets, the RVI investment fund, and Q1 earnings. The Robinhood Chain testnet, which not long ago was positioned as the foundation for "the next chapter of finance," has effectively disappeared from the company's public communications.
+            A third observation: <Strong>external communications have meaningfully moderated</Strong>. After Vlad Tenev's February 19 tweet celebrating 4 million transactions, there has been limited public messaging from Robinhood or its executives specifically about Robinhood Chain. The company's press releases in March and April have focused on monthly operating data, prediction markets, the RVI investment fund, and Q1 earnings. A post-launch communications slowdown is not unusual for L2s, but the combination of quieter messaging and softer on-chain metrics is a composite signal worth tracking directly rather than explaining away.
           </P>
 
           <P>
-            On-chain data doesn't care about press releases, but in this case the two trends are pointing in the same direction. Developers and users who showed up in February and March are losing interest. The network isn't dying, but it is noticeably cooling, and the silence from Menlo Park isn't helping.
+            The network is not dying: it is still processing well over a million transactions a day with tens of thousands of daily active addresses. But the direction of travel over the last three weeks is unambiguous — transactions, DAA, and new accounts are all trending down. Whether that reverses will depend on concrete ecosystem and product catalysts, not narrative.
           </P>
 
           {/* ── Key stats strip ── */}
@@ -387,7 +387,7 @@ const RobinhoodTestnetReport = () => {
           </P>
 
           <P>
-            On one hand, this is exactly what you'd want to see for a chain designed around tokenized RWAs and onchain financial services: the whole point is contract-mediated activity, not simple value transfers. On the other hand, the <em>absence</em> of native transfers is notable. On most testnets, you see persistent native transfer activity from users moving test tokens around, setting up wallets, running simple demos. The fact that this is so thin on Robinhood Chain, combined with the <Strong>17.90 tx/active address/day</Strong> ratio, suggests the chain's activity is heavily skewed toward automated, contract-call-heavy workloads rather than casual human testing.
+            On one hand, this is exactly what you'd want to see for a chain designed around tokenized RWAs and onchain financial services: the whole point is contract-mediated activity, not simple value transfers. On the other hand, the <em>thinness</em> of native transfers is notable. On most testnets, you see persistent native transfer activity from users moving test tokens around, setting up wallets, and running simple demos. The fact that this layer is so light on Robinhood Chain, combined with the <Strong>17.90 tx/active address/day</Strong> ratio, suggests the chain's current workload skews toward automated, contract-call-heavy activity rather than casual human testing — something that typically evolves as more consumer-facing dApps land on the network.
           </P>
 
           <Divider />
@@ -425,7 +425,7 @@ const RobinhoodTestnetReport = () => {
           </div>
 
           <P>
-            This spike pattern, a sudden narrow burst of deployments followed by mean reversion, is characteristic of a <Strong>specific deployer bot or campaign</Strong> rather than organic developer activity. Real development work tends to produce smoother, more distributed deployment patterns. The April 5 to 7 bars look like a single entity deploying hundreds of thousands of contracts in a short window, possibly for testing, possibly for airdrop farming, possibly as part of a stress test.
+            This spike pattern, a sudden narrow burst of deployments followed by mean reversion, is characteristic of a <Strong>targeted deployment campaign</Strong> — for example a stress test, a bulk factory deployment, or an infrastructure partner batching contracts — rather than the smoother, more distributed pattern typical of day-to-day application development. The April 5 to 7 bars look like a concentrated effort by one or a few entities over a short window, possibly for load testing or tooling validation.
           </P>
 
           <Sub id="verification" number="3.2">Contract Verification: The Telling Ratio</Sub>
@@ -443,11 +443,11 @@ const RobinhoodTestnetReport = () => {
           </P>
 
           <P>
-            A 0.15% verification rate strongly suggests that the overwhelming majority of Robinhood Chain's deployment volume is <Strong>automated, non-human, and not meaningfully connected to real application development</Strong>. This is a significant departure from the narrative of "developers are already building" that accompanied the launch.
+            A 0.15% verification rate is consistent with a testnet where a large portion of deployments comes from <Strong>automated tooling, stress-test deployers, and infrastructure scripts</Strong> rather than the smaller population of teams actively building consumer-facing dApps. It's a useful reminder that raw deployment counts on any testnet should be read alongside verification data before drawing conclusions about the size of the developer base.
           </P>
 
           <P>
-            To be fair: Robinhood's stated infrastructure partners (Alchemy, Allium, Chainlink, LayerZero, TRM) may be running their own test contracts without verifying them. And the chain's Arbitrum Orbit architecture may make some system-level deployments invisible to standard verification flows. But even accounting for these factors, a verification rate two orders of magnitude below a comparable testnet suggests that the real developer base is much smaller than the raw deployment numbers would imply.
+            Several caveats are worth noting. Robinhood's stated infrastructure partners (Alchemy, Allium, Chainlink, LayerZero, TRM) may be running their own test contracts without verifying them, and the chain's Arbitrum Orbit architecture can make some system-level deployments invisible to standard verification flows. Some teams also delay verification until closer to mainnet. Even adjusting generously for these factors, a verification rate roughly two orders of magnitude below a comparable testnet puts a ceiling on how many developer-led dApps can plausibly be in active development right now.
           </P>
 
           <Sub id="top-contracts" number="3.3">Top Contracts &amp; Method IDs</Sub>
@@ -473,7 +473,7 @@ const RobinhoodTestnetReport = () => {
           </P>
 
           <P>
-            This is another signal pointing in the same direction: <Strong>Robinhood Chain has relatively less "DeFi discovery" activity than Arc</Strong>. Fewer approvals means fewer new users encountering new tokens and protocols for the first time. The activity mix leans more toward repeated interactions with the same small set of contracts, consistent with bot-driven workloads.
+            This is another signal pointing in the same direction: <Strong>Robinhood Chain currently shows less "DeFi discovery" activity than Arc</Strong>. Fewer approvals tends to mean fewer new users encountering new tokens and protocols for the first time. The activity mix leans toward repeated interactions with a smaller set of contracts, consistent with a still-narrow live dApp surface area.
           </P>
 
           <Divider />
@@ -561,10 +561,10 @@ const RobinhoodTestnetReport = () => {
           <Divider />
 
           {/* ──────────────────── 6. Marketing Silence ──────────────────── */}
-          <SectionTitle id="marketing-silence" number="6">The Marketing Silence</SectionTitle>
+          <SectionTitle id="marketing-silence" number="6">Communications Cadence</SectionTitle>
 
           <P>
-            Here we have to step outside the on-chain data and address something that's harder to quantify but impossible to ignore. Since Vlad Tenev's <Strong>February 19 tweet</Strong> celebrating 4 million transactions in the first week, Robinhood Chain has effectively <Strong>disappeared from Robinhood's public communications</Strong>.
+            Stepping briefly outside the on-chain data: since Vlad Tenev's <Strong>February 19 tweet</Strong> celebrating 4 million transactions in the first week, Robinhood Chain has received <Strong>limited airtime in Robinhood's public communications</Strong>. Attention is a real input for any new chain, and two months of near-silence from a company that typically markets its products aggressively is a data point in itself.
           </P>
 
           <P>
@@ -582,36 +582,36 @@ const RobinhoodTestnetReport = () => {
           </ul>
 
           <P>
-            There are no Robinhood Chain press releases, no feature roadmap updates, no ecosystem milestone announcements, and no developer program updates since the initial February launch post. Vlad Tenev's public commentary has shifted almost entirely to prediction markets, tokenization at a conceptual level, and quarterly financial performance. The Robinhood Chain testnet, which was launched as the infrastructure backbone for the company's "financial superapp" vision, has been conspicuously absent from recent executive communications.
+            Over this window there have been no Robinhood Chain–specific press releases, feature roadmap updates, or ecosystem milestone announcements since the initial February launch post. Vlad Tenev's recent public commentary has leaned toward prediction markets, tokenization at a conceptual level, and quarterly financial performance. The Robinhood Chain testnet has been less prominent in recent executive communications than it was at launch.
           </P>
 
-          <P>Several possible explanations exist, each with different implications:</P>
+          <P>Several explanations are plausible, each with different implications:</P>
 
           <div className="my-8 space-y-6 pl-5 border-l-2 border-white/[0.06]">
             <div>
-              <div className="text-sm font-semibold text-white/70 mb-1">Scenario A — Intentional quiet phase</div>
-              <p className="text-[14.5px] leading-[1.8] text-white/45">Robinhood may be deliberately limiting Robinhood Chain communications to avoid drawing retail speculation or regulatory attention during a sensitive testnet period. Plausible but unusual for a company that typically leverages Tenev's platform heavily for product announcements.</p>
+              <div className="text-sm font-semibold text-white/70 mb-1">Scenario A — Normal testnet quiet phase</div>
+              <p className="text-[14.5px] leading-[1.8] text-white/45">Testnets are genuinely quiet periods for most L2s. Post-launch hype fades, the work shifts to engineering and auditing, and public communications reasonably pause until mainnet is closer. Consistent with a large share of successful L2 rollouts.</p>
             </div>
             <div>
-              <div className="text-sm font-semibold text-white/70 mb-1">Scenario B — Internal prioritization shift</div>
-              <p className="text-[14.5px] leading-[1.8] text-white/45">Q1 2026 has seen Robinhood make large public commitments to prediction markets, the MIAXdx acquisition, and expanding crypto operations internationally (Bitstamp integration). Executive bandwidth and marketing resources may have simply been redirected toward these more near-term revenue opportunities.</p>
+              <div className="text-sm font-semibold text-white/70 mb-1">Scenario B — Intentional quiet posture</div>
+              <p className="text-[14.5px] leading-[1.8] text-white/45">Robinhood may be deliberately limiting Robinhood Chain communications to avoid drawing retail speculation or regulatory attention during a sensitive testnet period. A defensible posture for a NASDAQ-listed issuer building regulated tokenized-RWA infrastructure.</p>
             </div>
             <div>
-              <div className="text-sm font-semibold text-white/70 mb-1">Scenario C — Strategic reevaluation</div>
-              <p className="text-[14.5px] leading-[1.8] text-white/45">Without direct evidence: internal testnet results may have prompted a reassessment of the chain's product-market fit, launch timing, or feature scope. The correlation between the on-chain decline and the absence of executive cheerleading is at least consistent with this scenario.</p>
+              <div className="text-sm font-semibold text-white/70 mb-1">Scenario C — Internal prioritization shift</div>
+              <p className="text-[14.5px] leading-[1.8] text-white/45">Q1 2026 has seen Robinhood make large public commitments to prediction markets, the MIAXdx acquisition, and expanding crypto operations internationally (Bitstamp integration). Executive bandwidth and marketing resources appear to have been redirected toward these nearer-term revenue opportunities.</p>
             </div>
             <div>
-              <div className="text-sm font-semibold text-white/70 mb-1">Scenario D — Normal testnet pattern</div>
-              <p className="text-[14.5px] leading-[1.8] text-white/45">Testnets are genuinely quiet periods for most L2s. Post-launch hype fades, the work shifts to engineering and auditing, and public communications reasonably pause until mainnet is closer. The most charitable interpretation.</p>
+              <div className="text-sm font-semibold text-white/70 mb-1">Scenario D — Strategic reevaluation</div>
+              <p className="text-[14.5px] leading-[1.8] text-white/45">Internal testnet results may have prompted a reassessment of scope, timing, or feature set. The correlation between the on-chain decline and the pullback in executive messaging is at minimum consistent with this scenario.</p>
             </div>
           </div>
 
           <P>
-            We don't know which of these is correct. What we can say is that the combination of <Strong>visible on-chain decline</Strong> and <Strong>prolonged public silence</Strong> from a company that clearly knows how to market products creates an asymmetric signal. If things were going well, we'd expect to see at least occasional milestone tweets, partnership announcements, or developer updates. The absence of those, in a market where attention is a finite and crucial resource for new chains, is itself a data point.
+            We don't know which of these is closest to reality, and in practice it may be a combination. What we can say is that <Strong>on-chain activity is softening</Strong> and <Strong>public communications have slowed</Strong> at the same time, from a company that knows how to amplify wins when it has them. Partnership announcements, developer-program milestones, or a concrete mainnet window would change the picture fast. Their absence, at this stage, is itself informative.
           </P>
 
           <P>
-            It's also worth noting the contrast with the Arbitrum ecosystem more broadly. Offchain Labs and the Arbitrum Foundation have continued aggressive marketing of the broader Arbitrum Open House developer program (which Robinhood contributed $1M to), but Robinhood Chain specifically is not a focal point of those communications. The chain feels, at the moment, somewhat <Strong>orphaned</Strong>, not receiving the consistent promotional support that most successful L2 launches have benefited from in their first few months.
+            For context: the broader Arbitrum ecosystem continues to market the Arbitrum Open House developer program (which Robinhood contributed $1M to), but Robinhood Chain is not a focal point of those communications. The chain currently receives less consistent promotional support than successful L2 launches have typically benefited from in their first few months — observation, not verdict.
           </P>
 
           <Divider />
@@ -636,13 +636,13 @@ const RobinhoodTestnetReport = () => {
             <div className="rounded-xl border border-red-500/10 bg-red-500/[0.02] p-7">
               <h4 className="text-sm font-semibold text-red-400/80 uppercase tracking-wider mb-5">Bear Case</h4>
               <ul className="space-y-4 text-[14px] leading-[1.8] text-white/50">
-                <li><Strong>Current trajectory is negative and accelerating.</Strong> -13.8% 7-day growth, ~30% DAA decline in three weeks, ~40% transaction decline from peak. No signs of stabilization.</li>
-                <li><Strong>Verification rate is catastrophically low.</Strong> 0.15% versus Arc's 8.9%. ~14K verified contracts on testnet would mean an extremely thin dApp ecosystem at mainnet go-live.</li>
-                <li><Strong>17.90 tx per address is too high to be organic.</Strong> Automation is the most parsimonious explanation. Stripping out bots could reduce the real user count by 60 to 80%.</li>
-                <li><Strong>Marketing silence is a yellow flag.</Strong> Two months of executive silence after the launch tweet isn't how successful L2 launches are typically handled.</li>
-                <li><Strong>Competition is brutal.</Strong> Coinbase's Base launched tokenized equities in December 2025. Kraken's Ink L2 alongside xStocks. Ondo and xStocks have head starts on RWA issuance. Arc chasing the same institutional rail.</li>
-                <li><Strong>No native incentive mechanism visible on-chain.</Strong> Neither airdrop speculation nor explicit testnet rewards drive the activity pattern. Without an obvious reason to keep using the testnet, users drift away.</li>
-                <li><Strong>Mainnet timing is undefined.</Strong> "Later this year" is not a timeline. Every week of drift without a defined date compounds ecosystem attrition risk.</li>
+                <li><Strong>Trajectory is negative and the decline is accelerating.</Strong> -13.8% 7-day growth, ~30% DAA decline in three weeks, ~40% transaction decline from peak. No stabilization in the data so far.</li>
+                <li><Strong>Verification rate is very low.</Strong> 0.15% versus Arc's 8.9%. ~14K verified contracts on testnet implies a thin dApp surface at mainnet go-live unless that number moves materially.</li>
+                <li><Strong>17.90 tx per address is too high to be organic.</Strong> Automation is the most parsimonious explanation. Net of bots, the real human user count is likely a fraction of the headline address figure.</li>
+                <li><Strong>Public cadence has quieted for two months.</Strong> Longer than is typical for a chain still pre-mainnet at a company that usually leverages Tenev's platform aggressively. Attention is a real input, and the clock is running.</li>
+                <li><Strong>Competition is stiff.</Strong> Coinbase's Base launched tokenized equities in December 2025. Kraken's Ink L2 alongside xStocks. Ondo and xStocks have head starts on RWA issuance. Arc is chasing the same institutional rail.</li>
+                <li><Strong>No visible testnet incentive program.</Strong> Neither an airdrop narrative nor an explicit rewards program is pulling users in. Without a reason to keep interacting with the testnet, drift is the default outcome.</li>
+                <li><Strong>Mainnet timing is undefined.</Strong> "Later this year" is not a timeline. Every week without a concrete window compounds ecosystem attrition risk.</li>
               </ul>
             </div>
           </div>
@@ -668,12 +668,12 @@ const RobinhoodTestnetReport = () => {
                   ['Cumulative Unique Addresses', '529,976', 'Smaller base than Arc'],
                   ['Avg Daily Active Addresses', '70,264', 'Currently ~78K, falling'],
                   ['Avg Daily Transactions', '1,257,870', 'Currently ~1.35M, falling'],
-                  ['Tx per Active Address', '17.90', 'Unusually high, suggests bots'],
+                  ['Tx per Active Address', '17.90', 'High, consistent with automated workloads'],
                   ['Contracts Deployed', '9,482,195', 'Large absolute number'],
-                  ['Verified Contracts', '14,489 (0.15%)', 'Extremely low, 60x lower than Arc'],
+                  ['Verified Contracts', '14,489 (0.15%)', 'Very low, ~60x lower than Arc'],
                   ['Peak DAA (late March)', '~120K', 'All-time high'],
                   ['Current DAA (mid-April)', '~65 to 80K', '~30% below peak'],
-                  ['Week-1 Retention (best cohorts)', '30 to 40%', 'Structurally decent'],
+                  ['Week-1 Retention (best cohorts)', '30 to 40%', 'Structurally stronger than Arc'],
                   ['Block Fullness', '~0%', 'Massive headroom'],
                   ['Gas Price', 'Fixed at 10⁻¹¹ Gwei', 'Not market-driven'],
                 ].map(([metric, value, signal], i) => (
@@ -700,11 +700,11 @@ const RobinhoodTestnetReport = () => {
               },
               {
                 title: 'Verification rate trend',
-                text: 'If the verification rate starts climbing meaningfully from the current 0.15% floor, it would suggest real developers are arriving. If it stays flat while deployment volume continues, it\'s further evidence of automated-activity dominance.',
+                text: 'If the verification rate climbs meaningfully from the current 0.15% floor, it signals real developers arriving. If it stays flat while deployment volume continues, automated activity remains the dominant share — and the gap between headline deployment numbers and real dApp development would keep widening.',
               },
               {
                 title: 'Executive communications cadence',
-                text: 'Any uptick in Vlad Tenev\'s or Johann Kerbrat\'s public discussion of Robinhood Chain would be a positive signal. Continued silence through Q2 2026 would be a yellow flag worth tracking.',
+                text: 'Any uptick in Vlad Tenev\'s or Johann Kerbrat\'s public discussion of Robinhood Chain is a positive signal. A continued quiet stretch through Q2 2026 would be a yellow flag, particularly if paired with persistent softness in on-chain metrics.',
               },
               {
                 title: 'Cohort retention stability',
@@ -716,7 +716,7 @@ const RobinhoodTestnetReport = () => {
               },
               {
                 title: 'DAA floor',
-                text: 'If DAA stabilizes above 50K through the rest of April, the current decline can be read as normal post-hype cooling. If DAA breaks below 50K and keeps trending lower, the network risks entering "dormant testnet" territory, which is a meaningfully worse place to be.',
+                text: 'If DAA stabilizes above 50K through the rest of April, the current decline reads as normal post-hype cooling. If DAA breaks below 50K and keeps trending lower, the network drifts toward dormant-testnet territory and will need concrete catalysts — ecosystem launches, incentive programs, or a mainnet window — to reverse it.',
               },
             ].map((item, i) => (
               <div key={i} className="flex gap-5">

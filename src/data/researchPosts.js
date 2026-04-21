@@ -1,8 +1,8 @@
 export const researchPosts = [
   {
     slug: 'robinhood-chain-70-days',
-    title: 'Robinhood Chain Testnet: The Rocket That Ran Out of Fuel',
-    subtitle: 'An independent analysis of Robinhood Chain\'s first ~70 days: 90.6M transactions, 530K addresses, 9.48M contracts deployed, and an unmistakable decline that Robinhood\'s press releases aren\'t discussing.',
+    title: 'Robinhood Chain Testnet: The First 70 Days',
+    subtitle: 'An independent on-chain analysis of Robinhood Chain\'s first ~70 days: 90.6M transactions, 530K addresses, 9.48M contracts deployed, a 0.15% verification rate, and a clear post-peak decline in transactions, DAA, and new accounts.',
     date: 'April 20, 2026',
     readingTime: '22 min read',
     author: 'Synthra Research',
