@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import BrandAssets from './pages/BrandAssets';
 import Research from './pages/Research';
 import ArcTestnetReport from './pages/ArcTestnetReport';
+import RobinhoodTestnetReport from './pages/RobinhoodTestnetReport';
 import { useProtocolStats } from './hooks/useSubgraphData';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/brand-assets" element={<BrandAssets />} />
             <Route path="/research" element={<Research />} />
             <Route path="/research/arc-testnet-100-days" element={<ArcTestnetReport />} />
+            <Route path="/research/robinhood-chain-70-days" element={<RobinhoodTestnetReport />} />
           </Routes>
           <Footer />
         </motion.div>
