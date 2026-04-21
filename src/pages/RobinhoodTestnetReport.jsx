@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 /* ── helper components ──────────────────────────────────── */
 
 const IMG = '/research/robinhood-testnet';
-const COVER = '/research/arc-testnet/cover.png';
+const COVER = '/research/robinhood-testnet/cover.webp';
 
 const ChartImg = ({ src, alt, caption }) => (
   <figure className="my-12">
@@ -106,6 +107,37 @@ const RobinhoodTestnetReport = () => {
 
   return (
     <>
+      <SEO
+        title="Robinhood Chain Testnet: The Rocket That Ran Out of Fuel"
+        description="An independent analysis of Robinhood Chain's first ~70 days: 90.6M transactions, 530K addresses, 9.48M contracts deployed, a 0.15% verification rate, and an accelerating decline Robinhood isn't discussing. By Synthra Research."
+        path="/research/robinhood-chain-70-days"
+        image="https://synthra.org/research/robinhood-testnet/cover.webp"
+        keywords="Robinhood Chain, Robinhood testnet, Robinhood L2, Robinhood on-chain analysis, Robinhood blockchain, Arbitrum Orbit, tokenized RWA, dex on robinhood, Synthra Research, emerging EVM chains"
+        article={{
+          publishedTime: '2026-04-20',
+          author: 'Synthra Research',
+          section: 'On-Chain Analysis',
+          tags: ['Robinhood', 'Arbitrum', 'Testnet', 'L2', 'RWA', 'On-Chain Analysis', 'Emerging EVM Chains'],
+        }}
+        faq={[
+          {
+            question: 'How many transactions did Robinhood Chain testnet process in its first 70 days?',
+            answer: 'Robinhood Chain processed 90.6 million transactions across 529,976 cumulative unique addresses in its first ~70 days, averaging 1.26M daily transactions and 70,264 daily active addresses. Seven-day transaction growth has turned negative at -13.8%.',
+          },
+          {
+            question: 'What is Robinhood Chain?',
+            answer: 'Robinhood Chain is an Arbitrum Orbit-based Layer 2 blockchain launched by Robinhood in February 2026, purpose-built for tokenized real-world assets (RWAs) and integrated with Robinhood\'s 27M+ funded customer base. The public testnet launched at Consensus Hong Kong on February 10, 2026.',
+          },
+          {
+            question: 'Why is Robinhood Chain activity declining?',
+            answer: 'After peaking in late March 2026 at ~2.4M daily transactions and ~120K daily active addresses, Robinhood Chain has entered a post-hype decline: ~40% drop in transactions and ~30% drop in DAA over three weeks. An extraordinarily low 0.15% contract verification rate and 17.90 tx/active-address/day ratio suggest most activity is automated bot/script usage rather than organic developer engagement. Robinhood has also gone publicly silent about the chain since February 19, 2026.',
+          },
+          {
+            question: 'Is there a DEX on Robinhood Chain?',
+            answer: 'Synthra is building the all-in-one decentralized exchange for Robinhood Chain and other emerging EVM chains, offering spot trading with concentrated liquidity, perpetual futures, cross-chain bridge, and launchpad in one protocol.',
+          },
+        ]}
+      />
       <ProgressBar />
       <TableOfContents />
 

@@ -8,7 +8,7 @@ export const researchPosts = [
     author: 'Synthra Research',
     category: 'On-Chain Analysis',
     tags: ['Robinhood', 'Arbitrum', 'Testnet', 'L2', 'RWA'],
-    cover: '/research/arc-testnet/cover.png',
+    cover: '/research/robinhood-testnet/cover.webp',
     featured: true,
   },
   {

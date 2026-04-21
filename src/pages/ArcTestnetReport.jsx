@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 /* ── helper components ──────────────────────────────────── */
 
@@ -104,6 +105,33 @@ const ArcTestnetReport = () => {
 
   return (
     <>
+      <SEO
+        title="Arc Testnet at 100 Days: an Independent On-Chain Analysis"
+        description="An independent analysis of Circle's Arc testnet covering 130M+ transactions, 1.7M addresses, and 11.5M contract deployments across the network's first 100 days. By Synthra Research."
+        path="/research/arc-testnet-100-days"
+        image="https://synthra.org/research/arc-testnet/cover.png"
+        keywords="Arc testnet, Circle Arc, Arc blockchain analysis, Arc on-chain data, Arc L1, stablecoin chain, Synthra Research, emerging EVM chains, dex on arc"
+        article={{
+          publishedTime: '2026-02-07',
+          author: 'Synthra Research',
+          section: 'On-Chain Analysis',
+          tags: ['Arc', 'Circle', 'Testnet', 'L1', 'Stablecoins', 'On-Chain Analysis', 'Emerging EVM Chains'],
+        }}
+        faq={[
+          {
+            question: 'How many transactions did Arc testnet process in its first 100 days?',
+            answer: 'Arc testnet processed over 130 million transactions in its first 100 days, with daily active addresses growing from ~50K at launch to over 350K by early February 2026.',
+          },
+          {
+            question: 'What is Arc blockchain?',
+            answer: 'Arc is an EVM-compatible Layer 1 blockchain built by Circle, the issuer of USDC. It uses the Malachite consensus engine and is designed for high throughput. In its first 100 days of testnet, it demonstrated capacity for 3,000+ TPS with blocks remaining 99.96% empty.',
+          },
+          {
+            question: 'Is there a DEX on Arc?',
+            answer: 'Synthra is building the leading decentralized exchange on Arc, offering spot trading with concentrated liquidity, perpetual futures, bridge, and launchpad — making it the most complete DEX on the Arc ecosystem.',
+          },
+        ]}
+      />
       <ProgressBar />
       <TableOfContents />
 
