@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { ShaderBackground } from './ui/shaders-hero-section';
 
 const HeroSection = () => {
   const texts = ["Liquidity", "Pools", "Swaps"];
@@ -6,46 +8,6 @@ const HeroSection = () => {
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
   const [charIndex, setCharIndex] = useState(0);
-  const embedRef = useRef(null);
-
-  // Initialize UnicornStudio embed
-  useEffect(() => {
-    const loadScript = () => {
-      return new Promise((resolve) => {
-        if (document.querySelector('script[src*="unicornStudio"]')) {
-          resolve();
-          return;
-        }
-        const script = document.createElement('script');
-        script.src =
-          'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.0.5/dist/unicornStudio.umd.js';
-        script.onload = resolve;
-        document.head.appendChild(script);
-      });
-    };
-
-    const init = async () => {
-      await loadScript();
-      // Clean up any previous canvases from StrictMode remount
-      if (embedRef.current) {
-        const existing = embedRef.current.querySelectorAll('canvas, iframe');
-        existing.forEach(el => el.remove());
-      }
-      if (window.UnicornStudio && window.UnicornStudio.init) {
-        window.UnicornStudio.init();
-      }
-    };
-
-    init();
-
-    return () => {
-      // Clean up on unmount
-      if (embedRef.current) {
-        const canvases = embedRef.current.querySelectorAll('canvas, iframe');
-        canvases.forEach(el => el.remove());
-      }
-    };
-  }, []);
 
   // Typing animation
   useEffect(() => {
@@ -82,73 +44,62 @@ const HeroSection = () => {
   }, [charIndex, isTyping, currentTextIndex, texts]);
 
   return (
-    <div className="relative bg-black overflow-hidden" style={{ minHeight: 'calc(100vh + 0px)' }}>
-      {/* UnicornStudio Embed Background */}
-      <div className="absolute inset-0 w-full h-full">
-        <div
-          data-us-project="d8wW4AHEarhN4danwQbU"
-          id="unicorn-hero"
-          ref={embedRef}
-          style={{ width: '100%', height: '110%' }}
-        />
+    <ShaderBackground>
+      <div className="relative z-10 flex min-h-screen items-end px-4 pb-12 pt-28 sm:px-6 sm:pb-14 md:px-8 md:pb-16 lg:px-16">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 md:gap-12">
+          <motion.div
+            className="max-w-4xl"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="text-center md:text-left">
+              <h1 className="mb-3 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-4xl md:leading-none lg:text-5xl xl:text-6xl">
+                High-Performance
+              </h1>
 
-        {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/100 md:from-black/60 md:via-black/10 md:to-black/100 z-10" />
-      </div>
+              <div className="relative mb-3">
+                <h2
+                  className="min-h-[1.2em] text-4xl leading-tight text-white italic sm:text-5xl md:text-5xl md:leading-none lg:text-6xl xl:text-7xl"
+                  style={{ fontFamily: 'Playfair Display, serif' }}
+                >
+                  {displayText}
+                  <span className="ml-1 animate-pulse text-fuchsia-300">|</span>
+                </h2>
+              </div>
 
-      {/* Content Container */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center md:justify-end md:flex-row md:items-end p-4 sm:p-6 md:p-8 lg:p-16 pt-20 pb-12 md:pt-8 lg:pt-16 md:pb-16">
-        {/* Text Content */}
-        <div className="text-center md:text-left mb-12 md:mb-16 md:flex-1">
-          <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight md:leading-none mb-3">
-            High-Performance
-          </h1>
+              <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl md:text-4xl md:leading-none lg:text-5xl xl:text-6xl">
+                Protocol
+              </h1>
+            </div>
+          </motion.div>
 
-          {/* Typing Text */}
-          <div className="relative mb-3">
-            <h2
-              className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight md:leading-none italic min-h-[1.2em]"
-              style={{ fontFamily: 'Playfair Display, serif' }}
+          <motion.div
+            className="flex flex-col items-center gap-4 sm:flex-row md:items-end md:justify-start"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <button
+              className="w-full whitespace-nowrap rounded-full border border-fuchsia-200/10 bg-white px-6 py-3 text-center font-semibold text-black shadow-[0_18px_80px_rgba(232,121,249,0.18)] transition-all duration-300 hover:scale-[1.02] hover:bg-fuchsia-50 sm:w-auto"
+              onClick={() => window.open('https://app.synthra.org', '_blank')}
             >
-              {displayText}
-              <span className="animate-pulse text-[#ff45db] ml-1">|</span>
-            </h2>
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight md:leading-none">
-            Protocol
-          </h1>
-        </div>
-
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 items-center md:items-end justify-center md:justify-start">
-          <button
-            className="w-full sm:w-auto px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg whitespace-nowrap text-center"
-            onClick={() => window.open('https://app.synthra.org', '_blank')}
-          >
-            Launch App
-          </button>
-          <button
-            className="w-full sm:w-auto px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 whitespace-nowrap text-center"
-            onClick={() => window.open('https://docs.synthra.org', '_blank')}
-          >
-            Read the Docs
-          </button>
+              Launch App
+            </button>
+            <button
+              className="w-full whitespace-nowrap rounded-full border border-white/24 bg-white/6 px-6 py-3 text-center font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:bg-white/12 sm:w-auto"
+              onClick={() => window.open('https://docs.synthra.org', '_blank')}
+            >
+              Read the Docs
+            </button>
+          </motion.div>
         </div>
       </div>
 
-      {/* Import Google Fonts + hide UnicornStudio watermark */}
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
-        #unicorn-hero a[href*="unicorn"],
-        #unicorn-hero > a,
-        #unicorn-hero div > a[target="_blank"] {
-          display: none !important;
-          opacity: 0 !important;
-          pointer-events: none !important;
-        }
       `}</style>
-    </div>
+    </ShaderBackground>
   );
 };
 
