@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@layer base {
+  :root {
+    --gradient-color: #8350e8;
+    --sparkles-color: #8350e8;
+  }
+
+  .dark {
+    --gradient-color: #8350e8;
+    --sparkles-color: #ffffff;
+  }
+}
+
 /* Base styles */
 body {
   font-family: 'Inter', sans-serif;

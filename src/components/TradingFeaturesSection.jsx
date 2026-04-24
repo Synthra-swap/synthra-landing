@@ -9,14 +9,9 @@ import {
   Area,
   ReferenceLine,
 } from 'recharts';
-import uomiLogo from "../assets/UOMI_white.png";
-import coinGecko from "../assets/CG-Wordmark@2x-2.png";
-import theGraph from "../assets/theGraph.png";
-import Arc_Icon_White from "../assets/Arc_Icon_White.png";
-import pyth from "../assets/pyth.png";
-import robinhood from "../assets/robinhood-logo-white.png";
 import { useSpring, animated, easings, to as interpolate } from '@react-spring/web';
 import { useTopPools } from '../hooks/useSubgraphData';
+import { PartnersSparklesStrip } from './ui/partners-sparkles-strip';
 
 /* ─────────────────────────────────────────────
    ORIGINAL ANIMATION HELPERS (unchanged logic)
@@ -342,23 +337,6 @@ const TradingFeaturesSection = () => {
     });
   };
 
-  const partners = [
-      { name: "UOMI", logo: uomiLogo },
-      {
-        name: "TradingView",
-        logo: "https://framerusercontent.com/images/s68ogdaNaA5tBCptnCUV4oZJlSg.png?scale-down-to=512",
-      },
-      { name: "CoinGecko", logo: coinGecko },
-      { name: "The Graph", logo: theGraph },
-      { name: "Arc Protocol", logo: Arc_Icon_White },
-      { name: "Pyth Network", logo: pyth },
-      { name: "Robinhood", logo: robinhood },
-      // Aggiungi altri partner se servono
-    ];
-  
-    // Crea multiple copie per un loop fluido
-  const duplicatedPartners = [...partners, ...partners];
-
   const animatedPoint1 = getAnimatedPosition(indices.start1, indices.end1);
   const animatedPoint2 = getAnimatedPosition(indices.start2, indices.end2);
   const shouldShowChart = data && data.length > 0;
@@ -382,22 +360,7 @@ const TradingFeaturesSection = () => {
       {/* ═══════════════════════════════════════════
           SECTION 1 — METRICS
           ═══════════════════════════════════════════ */}
-      <section className="max-w-6xl mx-auto px-4 py-24">
-
-       <div className="relative w-full overflow-hidden">
-          <div className="flex items-center gap-24 animate-scroll">
-            {duplicatedPartners.map((partner, idx) => (
-              <div key={`${partner.name}-${idx}`} className="flex-shrink-0">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PartnersSparklesStrip />
 
      
           <section className="relative max-w-6xl mx-auto px-4 pb-24">
@@ -739,14 +702,6 @@ const TradingFeaturesSection = () => {
         @keyframes fadeSlide {
           from { opacity: 0; transform: translateY(12px); }
           to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll {
-          animation: scroll 25s linear infinite;
-          width: fit-content;
         }
       `}</style>
     </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Logo from './Logo';
+import { AnimatedGlowingButton } from './ui/animated-glowing-button';
 import '../index.css';
 
 const Navbar = () => {
@@ -80,14 +81,14 @@ const Navbar = () => {
         </div>
 
         {/* CTA - border style like ZeroLend "Use App" */}
-        <a
+        <AnimatedGlowingButton
           href="https://app.synthra.org"
           target="_blank"
           rel="noopener noreferrer"
-          className="relative z-10 flex-shrink-0 px-5 py-2 rounded-xl text-[13px] font-semibold text-white border border-white/20 bg-white/[0.06] hover:bg-white/[0.12] hover:border-white/30 transition-all duration-300 tracking-[-0.01em]"
+          className="relative z-10"
         >
           Launch App
-        </a>
+        </AnimatedGlowingButton>
       </div>
     </motion.nav>
   );
