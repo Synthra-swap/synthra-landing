@@ -4,18 +4,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import SubgraphStatus from './components/SubgraphStatus';
 import Home from './pages/Home';
 import BrandAssets from './pages/BrandAssets';
 import Research from './pages/Research';
 import ArcTestnetReport from './pages/ArcTestnetReport';
 import RobinhoodTestnetReport from './pages/RobinhoodTestnetReport';
 import NotFound from './pages/NotFound';
-import { useProtocolStats } from './hooks/useSubgraphData';
 
 function App() {
-  const { stats, error: subgraphError, refetch } = useProtocolStats();
-
   return (
     <div className="min-h-screen bg-black text-white">
       <AnimatePresence mode="wait">

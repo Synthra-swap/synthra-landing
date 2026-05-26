@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 const SITE = 'https://synthra.org';
 const DEFAULT_IMAGE = `${SITE}/header.png`;
 const SITE_NAME = 'Synthra';
-const DEFAULT_KEYWORDS = 'Synthra, DEX, decentralized exchange, all in one dex, dex on arc, dex on robinhood, emerging evm chains, perpetual trading, DeFi, swap, bridge, launchpad, concentrated liquidity';
+const DEFAULT_KEYWORDS = 'Synthra, DEX, decentralized exchange, chain abstraction trading layer, chain abstracted DEX, Arc DEX, DEX on Arc, multichain DEX, cross-chain DEX, crosschain DEX, all in one dex, perpetual trading, DeFi, swap, bridge, launchpad, concentrated liquidity, cross-chain routing';
 
 /**
  * Full SEO + GEO head for every route.
@@ -11,8 +11,8 @@ const DEFAULT_KEYWORDS = 'Synthra, DEX, decentralized exchange, all in one dex, 
  * and GEO-friendly schema for AI/generative engines.
  */
 const SEO = ({
-  title = 'Synthra — All-in-One DEX on Arc, Robinhood & Emerging EVM Chains',
-  description = 'Synthra is the all-in-one decentralized exchange for Arc, Robinhood and emerging EVM chains. Swap, perpetuals, bridge, launchpad & API — low fees, deep liquidity, one protocol.',
+  title = 'Synthra — Chain-Abstracted Trading Layer',
+  description = 'Synthra is the chain-abstracted trading layer and cross-chain DEX for spot, perps, liquidity and routing APIs across Arc, Robinhood Chain and emerging markets. One account, all chains, all markets.',
   path = '/',
   image = DEFAULT_IMAGE,
   type = 'website',
@@ -61,7 +61,7 @@ const SEO = ({
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Web',
         url: 'https://app.synthra.org',
-        description: 'Synthra is an all-in-one decentralized exchange (DEX) for emerging EVM chains including Arc and Robinhood. It offers spot trading via concentrated liquidity pools, perpetual futures with up to 100x leverage, a cross-chain bridge, token launchpad, and developer API — all in a single protocol with low fees and deep liquidity.',
+        description: 'Synthra is a chain-abstracted trading layer and cross-chain DEX for spot markets, perpetual futures, liquidity and routing APIs across Arc, Robinhood Chain and emerging markets. It gives traders and builders one execution surface across supported chains without exposing bridge or chain complexity.',
         offers: {
           '@type': 'Offer',
           price: '0',
@@ -70,6 +70,8 @@ const SEO = ({
         featureList: [
           'Spot trading with concentrated liquidity',
           'Perpetual futures up to 100x leverage',
+          'Arc DEX market access',
+          'Multichain and cross-chain DEX routing',
           'Cross-chain bridge',
           'Token launchpad',
           'Developer API',
