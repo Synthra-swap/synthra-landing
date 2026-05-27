@@ -3,6 +3,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
+import { ShinyButton } from './ui/shiny-button';
 import logo from '../assets/Synthra-logo-white-cropped.png';
 
 const navLinks = [
@@ -74,7 +75,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop nav */}
-            <div className="hidden justify-center md:flex">
+            <div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 justify-center md:flex">
               <div className="relative flex items-center gap-0.5 rounded-full border border-white/[0.08] bg-white/[0.025] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
                 {navLinks.map((link) => {
                   const active = link.internal && isActive(link.href);
@@ -109,7 +110,7 @@ const Navbar = () => {
                     <Link
                       key={link.label}
                       to={link.href}
-                      className={`group ${baseClasses} ${colorClasses}`}
+                      className={`group pointer-events-auto ${baseClasses} ${colorClasses}`}
                     >
                       {content}
                     </Link>
@@ -119,7 +120,7 @@ const Navbar = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`group ${baseClasses} ${colorClasses}`}
+                      className={`group pointer-events-auto ${baseClasses} ${colorClasses}`}
                     >
                       {content}
                     </a>
@@ -130,6 +131,16 @@ const Navbar = () => {
 
             {/* Right side: CTA + mobile toggle */}
             <div className="flex items-center gap-2 justify-self-end">
+              <ShinyButton
+                href="https://synroute.synthra.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="synthra-nav-shiny hidden sm:inline-flex"
+                ariaLabel="Open SynRoute"
+              >
+                SynRoute
+                <ArrowUpRight size={13} strokeWidth={2.25} />
+              </ShinyButton>
 
               <a
                 href="https://app.synthra.org"
@@ -217,6 +228,16 @@ const Navbar = () => {
                       </a>
                     );
                   })}
+                  <ShinyButton
+                    href="https://synroute.synthra.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="synthra-mobile-shiny mt-2"
+                    ariaLabel="Open SynRoute"
+                  >
+                    SynRoute
+                    <ArrowUpRight size={16} strokeWidth={2.25} />
+                  </ShinyButton>
                   <a
                     href="https://app.synthra.org"
                     target="_blank"
