@@ -1,5 +1,17 @@
 export const researchPosts = [
   {
+    slug: 'arc-testnet-200-days',
+    title: 'Arc Testnet at 200 Days: The Quiet Compounding',
+    subtitle: 'An independent follow-up to our 100-day analysis: 426.8M total transactions, 2.61M cumulative addresses, 282K average daily active addresses, 24.7M contracts deployed, and 1.16M verified contracts.',
+    date: 'June 11, 2026',
+    readingTime: '18 min read',
+    author: 'Synthra Research',
+    category: 'On-Chain Analysis',
+    tags: ['Arc', 'Circle', 'Testnet', 'L1', 'Stablecoins', 'Account Abstraction'],
+    cover: '/research/arc-testnet-200/cover.png',
+    featured: true,
+  },
+  {
     slug: 'robinhood-chain-70-days',
     title: 'Robinhood Chain Testnet: The First 70 Days',
     subtitle: 'An independent on-chain analysis of Robinhood Chain\'s first ~70 days: 90.6M transactions, 530K addresses, 9.48M contracts deployed, a 0.15% verification rate, and a clear post-peak decline in transactions, DAA, and new accounts.',
@@ -9,7 +21,7 @@ export const researchPosts = [
     category: 'On-Chain Analysis',
     tags: ['Robinhood', 'Arbitrum', 'Testnet', 'L2', 'RWA'],
     cover: '/research/robinhood-testnet/cover.webp',
-    featured: true,
+    featured: false,
   },
   {
     slug: 'arc-testnet-100-days',
